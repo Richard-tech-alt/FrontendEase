@@ -1,0 +1,979 @@
+// import React, { useState } from "react";
+// import { ChevronLeft, ChevronRight, Grid2X2, LayoutList } from "lucide-react";
+// import { Button } from "@/components/ui/button";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
+// import { useNavigate } from "react-router-dom";
+// import { motion } from "framer-motion";
+// import {
+//   Card,
+//   CardContent,
+//   CardDescription,
+//   CardFooter,
+//   CardHeader,
+//   CardTitle,
+// } from "@/components/ui/card";
+// import { Badge } from "@/components/ui/badge";
+// import { ArrowLeft, CreditCard} from "lucide-react";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import PaymentAddressCopy from "./PaymentAddressCOpy";
+
+// const  SeparateCardList = () => {
+//   const navigate = useNavigate();
+//   const [selectedOption, setSelectedOption] = useState("btc");
+
+//   const plan = JSON.parse(localStorage.getItem("selectedPlan"));
+
+
+// // const handleCopy = () => {
+// //   navigator.clipboard.writeText("TFrqT2bguF9ATh5kPXdpXpDFQNAPLDQhSs");
+// //   setCopied(true);
+// //   setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+// // };
+
+
+
+//   const [cards] = React.useState([
+//     { id: 1, status: "Active", imageUrl: "/in-visa-gold-card-498x280.png" },
+//     { id: 2, status: "Active", imageUrl: "/in-visa-gold-card-498x280.png" },
+//     { id: 3, status: "Inactive", imageUrl: "/in-visa-gold-card-498x280.png" },
+//   ]);
+//   const [filter, setFilter] = React.useState("all");
+//   const [isGridView, setIsGridView] = React.useState(false);
+//   const [showPayment, setShowPayment] = React.useState(true);
+//   const [selectedCard, setSelectedCard] = React.useState(null);
+
+//   const handleCardSelect = (card) => {
+//     setSelectedCard(card);
+//     setShowPayment(true);
+
+//   };
+
+//   const calculateTotal = (price) => {
+//     const basePrice = Number.parseInt(price)
+//     const tax = basePrice * 0.18
+//     return (basePrice + tax).toFixed(2)
+//   }
+
+//   const qrImages = {
+//     btc: "/BTC.jpg",
+//     eth: "/ETC.jpg",
+//     btct: "/btct.jpg",
+//   };
+
+//   const paymentAddresses = {
+//     btc: "bc1q46aspj5n6avdl5zu7k2vdcrmuyxgrcdy3jrxvc",
+//     eth: "0xEf0fe7fc0Cf0c4fa5755B957B547F59D8A308147",
+//     btct: "TEaSqWy5NsS5mbkTgnNSmT5pem9NmxTY7e"
+//   };
+
+//   const scroll = (direction) => {
+//     const container = document.getElementById("card-container");
+//     if (container) {
+//       const scrollAmount = direction === "left" ? -300 : 300;
+//       container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+//     }
+//   };
+
+//   const handleAddCard = () => {
+//     console.log("Add new card");
+//   };
+
+//   const filteredCards = cards.filter((card) => {
+//     if (filter === "all") return true;
+//     return card.status.toLowerCase() === filter.toLowerCase();
+//   });
+
+//   const PaymentPage = () => (
+//     <motion.div
+//       initial={{ opacity: 0, y: 20 }}
+//       animate={{ opacity: 1, y: 0 }}
+//       className="w-full max-w-2xl mx-auto p-6 "
+//     >
+//       {/* <Button
+//         variant="ghost"
+//         onClick={() => setShowPayment(false)}
+//         className="mb-6"
+//       >
+//         <ArrowLeft className="mr-2 h-4 w-4" />
+//         Back to Cards
+//       </Button> */}
+
+//       {/* <Card className="w-full">
+//         <CardHeader>
+//           <CardTitle className="flex items-center justify-between">
+//             Payment Details
+//             <Badge variant="secondary" className="text-sm">
+//               Card #{selectedCard?.id}
+//             </Badge>
+//           </CardTitle>
+//           <CardDescription>
+//             Complete your {plan?.title || "Plan"} subscription
+//           </CardDescription>
+//         </CardHeader>
+//         <CardContent className="space-y-6">
+//           <div className="border rounded-lg p-6 bg-muted/50">
+//             <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
+//             <div className="flex justify-between mb-2">
+//               <span>Plan Price</span>
+//               <span>{plan?.price}/month</span>
+//             </div>
+//             <div className="flex justify-between mb-2">
+//               <span>Tax</span>
+//               <span>
+//                 ₹{plan?.price ? parseInt(plan.price) * 0.18 : 0}
+//               </span>
+//             </div>
+//             <div className="border-t pt-2 mt-2">
+//               <div className="flex justify-between font-semibold">
+//                 <span>Total</span>
+//                 <span>
+//                   ₹
+//                   {plan?.price
+//                     ? parseInt(plan.price) * 1.18
+//                     : 0}
+//                 </span>
+//               </div>
+//             </div>
+//           </div>
+
+//           <div className="border rounded-lg p-6 bg-muted/50">
+//             <h3 className="text-lg font-semibold mb-4">Scan to Pay</h3>
+//             <div className="flex flex-col items-center space-y-4">
+//               <QrCode className="w-48 h-48" />
+//               <p className="text-sm text-muted-foreground text-center">
+//                 Scan this QR code with your preferred payment app to complete
+//                 the transaction
+//               </p>
+//             </div>
+//           </div>
+//         </CardContent>
+//         <CardFooter className="flex flex-col space-y-4">
+//           <Button
+//             className="w-full"
+//             size="lg"
+//             onClick={() => navigate("/payment-confirmation")}
+//           >
+//             <CreditCard className="mr-2 h-4 w-4" />
+//             Confirm Payment
+//           </Button>
+//           <p className="text-xs text-center text-muted-foreground">
+//             By confirming payment, you agree to our Terms of Service and Privacy
+//             Policy
+//           </p>
+//         </CardFooter>
+//       </Card> */}
+
+// <Card className="w-full shadow-lg border-none bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800">
+//               <CardHeader className="pb-4">
+//                 <div className="flex justify-between items-center">
+//                   <CardTitle className="text-2xl">Payment Details</CardTitle>
+//                   <Badge variant="secondary" className="text-sm">
+//                     Card #{selectedCard?.id}
+//                   </Badge>
+//                 </div>
+//                 <CardDescription>Complete your {plan?.title || "Premium"} subscription</CardDescription>
+//               </CardHeader>
+//               <CardContent className="space-y-6">
+//                 <Tabs defaultValue="summary" className="w-full">
+//                   <TabsList className="grid w-full grid-cols-2 mb-4">
+//                     <TabsTrigger value="summary">Order Summary</TabsTrigger>
+//                     <TabsTrigger value="payment">Payment Method</TabsTrigger>
+//                   </TabsList>
+
+//                   <TabsContent value="summary" className="space-y-4">
+//                     <div className="rounded-lg p-6 bg-slate-50 dark:bg-slate-900 border">
+//                       <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
+//                       <div className="space-y-3">
+//                         <div className="flex justify-between items-center">
+//                           <span className="text-muted-foreground">Plan</span>
+//                           <span className="font-medium">{plan?.title || "Premium"}</span>
+//                         </div>
+//                         <div className="flex justify-between items-center">
+//                           <span className="text-muted-foreground">Price</span>
+//                           <span>${plan?.price || ""}/month</span>
+//                         </div>
+//                         <div className="flex justify-between items-center">
+//                           <span className="text-muted-foreground">Tax (0%)</span>
+//                           <span>{plan?.price ? (Number.parseInt(plan.price) * 0.18).toFixed(2) : ""}</span>
+//                         </div>
+//                         <div className="border-t pt-3 mt-3">
+//                           <div className="flex justify-between items-center font-semibold">
+//                             <span>Total</span>
+//                             <span>-{plan?.price ? calculateTotal(plan.price) : ""}</span>
+//                           </div>
+//                         </div>
+//                       </div>
+//                     </div>
+
+//                     {/* <div className="rounded-lg p-6 bg-slate-50 dark:bg-slate-900 border">
+//                       <div className="flex items-center gap-3">
+//                         <div className="w-12 h-8 bg-slate-200 dark:bg-slate-700 rounded flex items-center justify-center">
+//                           <CreditCard className="w-6 h-6 text-slate-700 dark:text-slate-300" />
+//                         </div>
+//                         <div>
+//                           <p className="font-medium">{selectedCard?.type || "Visa Gold"}</p>
+//                           <p className="text-sm text-muted-foreground">
+//                             {selectedCard?.number || "•••• •••• •••• 4321"}
+//                           </p>
+//                         </div>
+//                       </div>
+//                     </div> */}
+//                   </TabsContent>
+//                   <TabsContent value="payment" className="space-y-4">
+//                   <div className="flex flex-col items-center space-y-4">
+//                   <div className="mb-4">
+//           <label className="block text-sm font-medium mb-1">Select Payment Method</label>
+//           <select
+//             className="w-full p-2 border rounded-md dark:bg-slate-800"
+//             value={selectedOption}
+//             onChange={(e) => setSelectedOption(e.target.value)}
+//           >
+//             <option value="btc">BTC</option>
+//             <option value="eth">ETH</option>
+//             <option value="btct">BTCT</option>
+//           </select>
+//         </div>
+//   <div className="w-48 h-48 bg-white p-4 rounded-lg flex items-center justify-center">
+//     <img
+//       src={qrImages[selectedOption]}
+//       alt={`${selectedOption} QR Code`}
+//       className="w-full h-full object-contain"
+//     />
+//   </div>
+//   {/* Payment Code + Copy */}
+//   {/* <div className="text-center">
+//       <p className="text-sm text-muted-foreground mb-2">Or copy this code:</p>
+//       <div className="flex items-center justify-center gap-2">
+//         <span className="text-sm bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md select-all">
+//           {paymentAddresses[selectedOption]}
+//         </span>
+//         <button
+//           onClick={() => {
+//             navigator.clipboard.writeText(paymentAddresses[selectedOption]);
+//           }}
+//           className="px-2 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-md"
+//         >
+//           Copy
+//         </button>
+//       </div>
+//     </div> */}
+
+
+
+// <TabsContent value="payment" className="space-y-4">
+//   <div className="flex flex-col items-center space-y-4">
+    
+//     <PaymentAddressCopy
+//       paymentAddress={paymentAddresses[selectedOption]} 
+//       selectedOption={selectedOption}
+//     />
+    
+//     <p className="text-sm text-center text-slate-500 dark:text-slate-400 max-w-md">
+//       Scan the QR code with your crypto wallet or copy the address above to complete the transaction.
+//     </p>
+//   </div>
+// </TabsContent>
+
+
+//   {/* <div className="text-center">
+//     <p className="text-sm text-muted-foreground mb-2">Or copy this code:</p>
+//     <div className="flex items-center justify-center gap-2">
+//       <span className="text-sm bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md select-all">
+//         TFrqT2bguF9ATh5kPXdpXpDFQNAPLDQhSs
+//       </span>
+//       <button
+//         onClick={() => {
+//           navigator.clipboard.writeText("TFrqT2bguF9ATh5kPXdpXpDFQNAPLDQhSs");
+//         }}
+//         className="px-2 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-md"
+//       >
+//         Copy
+//       </button>
+//     </div>
+//   </div> */}
+//   {/* <p className="text-sm text-muted-foreground text-center max-w-md">
+//     Scan this QR code with your preferred payment app or paste the code above to complete the transaction.
+//   </p> */}
+// </div>
+// </TabsContent>
+//                     {/* <div className="rounded-lg p-6 bg-slate-50 dark:bg-slate-900 border">
+//                       <h3 className="text-lg font-semibold mb-4">Scan to Pay</h3>
+//                       <div className="mb-4">
+//             <label className="block text-sm font-medium mb-1">Select Payment Method</label>
+//             <select
+//               className="w-full p-2 border rounded-md dark:bg-slate-800"
+//               value={selectedOption}
+//               onChange={(e) => setSelectedOption(e.target.value)}
+//             >
+//               <option value="btc">BTC</option>
+//               <option value="abc">ABC</option>
+//               <option value="dcs">DCS</option>
+//             </select>
+//           </div>
+//                       <div className="flex flex-col items-center space-y-4">
+//                         <div className="w-48 h-48 bg-white p-4 rounded-lg flex items-center justify-center">
+//                         <img
+//                 src={qrImages[selectedOption]}
+//                 alt={`${selectedOption} QR Code`}
+//                 className="w-full h-full object-contain"
+//               />
+//                         </div>
+//                         <p className="text-sm text-muted-foreground text-center max-w-md">
+//                           Scan this QR code with your preferred payment app to complete the transaction
+//                         </p>
+//                       </div>
+//                     </div> */}
+//                   {/* </TabsContent> */}
+//                 </Tabs>
+//               </CardContent>
+
+//               <CardFooter className="flex flex-col space-y-4 pt-2 pb-6">
+//                 <Button className="w-full" size="lg" onClick={() => navigate("/payment-confirmation")}>
+//                   <CreditCard className="mr-2 h-4 w-4" />
+//                   Confirm Payment
+//                 </Button>
+//                 <p className="text-xs text-center text-muted-foreground">
+//                   By confirming payment, you agree to our Terms of Service and Privacy Policy
+//                 </p>
+//               </CardFooter>
+//             </Card>
+//     </motion.div>
+//   );
+
+//   if (showPayment) {
+//     return <PaymentPage />;
+//   }
+
+ 
+
+
+//   return (
+//     <div className="container mx-auto p-4 space-y-6 md:px-44  min-h-[100vh]">
+//       <div className="flex flex-col sm:flex-row justify-between gap-4">
+//         <div className="flex items-center gap-4">
+//           <Button
+//             variant="ghost"
+//             onClick={() => navigate("/dashboard-for-user")}
+//             className="mr-4"
+//           >
+//             <ArrowLeft className="h-4 w-4 mr-2" />
+//             Back to Plans
+//           </Button>
+//           <h1 className="text-xl font-semibold">Card List</h1>
+//         </div>
+//         <div className="flex items-center gap-4">
+//           <Select value={filter} onValueChange={setFilter}>
+//             <SelectTrigger className="w-[100px]">
+//               <SelectValue placeholder="Filter" />
+//             </SelectTrigger>
+//             <SelectContent>
+//               <SelectItem value="all">All</SelectItem>
+//               <SelectItem value="active">Active</SelectItem>
+//               <SelectItem value="inactive">Inactive</SelectItem>
+//             </SelectContent>
+//           </Select>
+
+//           <div className="flex items-center border rounded-lg">
+//             <Button
+//               variant="ghost"
+//               size="icon"
+//               className={!isGridView ? "bg-muted" : ""}
+//               onClick={() => setIsGridView(false)}
+//             >
+//               <LayoutList className="h-4 w-4" />
+//             </Button>
+//             <Button
+//               variant="ghost"
+//               size="icon"
+//               className={isGridView ? "bg-muted" : ""}
+//               onClick={() => setIsGridView(true)}
+//             >
+//               <Grid2X2 className="h-4 w-4" />
+//             </Button>
+//           </div>
+
+//           <Button onClick={handleAddCard}>New Card</Button>
+//         </div>
+//       </div>
+
+//       <div className="relative">
+//         <div
+//           id="card-container"
+//           className={`
+//             ${
+//               isGridView
+//                 ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+//                 : "flex overflow-x-auto gap-4"
+//             }
+//             scroll-smooth py-2 md:px-20
+//           `}
+//         >
+//           {filteredCards.map((card) => (
+//             <div
+//               key={card.id}
+//               className={`
+//                 ${isGridView ? "" : "flex-none"}
+//                 w-[320px] h-[200px] rounded-xl overflow-hidden
+//                 transition-transform hover:scale-105 cursor-pointer
+//               `}
+//               onClick={() => handleCardSelect(card)}
+//             >
+//               <div className="w-full h-full bg-gradient-to-br from-blue-900 to-blue-950 relative">
+//                 <img
+//                   src={card.imageUrl}
+//                   alt={`Card ${card.id}`}
+//                   className="w-full h-full object-cover"
+//                 />
+//                 <span
+//                   className={`
+//                     absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium
+//                     ${
+//                       card.status === "Active"
+//                         ? "bg-green-500/20 text-green-500"
+//                         : "bg-gray-500/20 text-gray-500"
+//                     }
+//                   `}
+//                 >
+//                   {card.status}
+//                 </span>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+
+//         {!isGridView && (
+//           <>
+//             <Button
+//               variant="ghost"
+//               size="icon"
+//               className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 rounded-full shadow-lg hidden md:flex"
+//               onClick={() => scroll("left")}
+//             >
+//               <ChevronLeft className="h-4 w-4" />
+//             </Button>
+//             <Button
+//               variant="ghost"
+//               size="icon"
+//               className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 rounded-full shadow-lg hidden md:flex"
+//               onClick={() => scroll("right")}
+//             >
+//               <ChevronRight className="h-4 w-4" />
+//             </Button>
+//           </>
+//         )}
+//       </div>
+
+//       <div className="bg-gray-50 rounded-lg p-6 mt-8">
+//         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+//           <div className="text-center md:text-left">
+//             <h2 className="text-2xl font-bold mb-4">
+//               Get a card to control your expenses
+//             </h2>
+//             <Button variant="outline" onClick={handleAddCard}>
+//               Issue a new card
+//             </Button>
+//           </div>
+//           <img
+//             src="/iBlog_1060X400_1-1.jpg"
+//             alt="Card stack illustration"
+//             className="w-full max-w-sm aspect-video bg-gradient-to-br from-purple-600 to-purple-900 rounded-xl"
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+// export default SeparateCardList;
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState } from "react"
+import { ChevronLeft, ChevronRight, Grid2X2, LayoutList } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useNavigate } from "react-router-dom"
+import { motion } from "framer-motion"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { ArrowLeft, CreditCard } from "lucide-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import PaymentAddressCopy from "./PaymentAddressCOpy"
+
+const SeparateCardList = () => {
+  const navigate = useNavigate()
+  const [selectedOption, setSelectedOption] = useState("btc")
+
+  const plan = JSON.parse(localStorage.getItem("selectedPlan"))
+
+  const [cardInfo, setCardInfo] = useState(() => {
+    const savedCardInfo = localStorage.getItem("selectedCardInfo")
+    return savedCardInfo ? JSON.parse(savedCardInfo) : { type: "virtual", price: 100, name: "Virtual Card" }
+  })
+
+  // const handleCopy = () => {
+  //   navigator.clipboard.writeText("TFrqT2bguF9ATh5kPXdpXpDFQNAPLDQhSs");
+  //   setCopied(true);
+  //   setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+  // };
+
+  const [cards] = React.useState([
+    { id: 1, status: "Active", imageUrl: "/in-visa-gold-card-498x280.png" },
+    { id: 2, status: "Active", imageUrl: "/in-visa-gold-card-498x280.png" },
+    { id: 3, status: "Inactive", imageUrl: "/in-visa-gold-card-498x280.png" },
+  ])
+  const [filter, setFilter] = React.useState("all")
+  const [isGridView, setIsGridView] = React.useState(false)
+  const [showPayment, setShowPayment] = React.useState(true)
+  const [selectedCard, setSelectedCard] = React.useState(null)
+          
+  const handleCardSelect = (card) => {
+    setSelectedCard(card)
+    localStorage.setItem("selectedCardInfo", JSON.stringify({ type: "virtual", price: 100, name: "Virtual Card" }))
+    setCardInfo({ type: "virtual", price: 100, name: "Virtual Card" })
+    setShowPayment(true)
+  }
+
+  const calculateTotal = () => {
+    const basePrice = cardInfo.price
+    const tax = basePrice * 0.00
+    return (basePrice + tax).toFixed(2)
+  }
+
+  const qrImages = {
+    btc: "/BTC.jpg",
+    eth: "/ETC.jpg",
+    btct: "/btct.jpg",
+  }
+
+  const paymentAddresses = {
+    btc: "bc1q46aspj5n6avdl5zu7k2vdcrmuyxgrcdy3jrxvc",
+    eth: "0xEf0fe7fc0Cf0c4fa5755B957B547F59D8A308147",
+    btct: "TEaSqWy5NsS5mbkTgnNSmT5pem9NmxTY7e",
+  }
+
+  const scroll = (direction) => {
+    const container = document.getElementById("card-container")
+    if (container) {
+      const scrollAmount = direction === "left" ? -300 : 300
+      container.scrollBy({ left: scrollAmount, behavior: "smooth" })
+    }
+  }
+
+  const handleAddCard = () => {
+    console.log("Add new card")
+  }
+
+  const filteredCards = cards.filter((card) => {
+    if (filter === "all") return true
+    return card.status.toLowerCase() === filter.toLowerCase()
+  })
+
+  const PaymentPage = () => (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="w-full max-w-2xl mx-auto p-6 "
+    >
+      {/* <Button
+        variant="ghost"
+        onClick={() => setShowPayment(false)}
+        className="mb-6"
+      >
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        Back to Cards
+      </Button> */}
+
+      {/* <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="flex items-center justify-between">
+            Payment Details
+            <Badge variant="secondary" className="text-sm">
+              Card #{selectedCard?.id}
+            </Badge>
+          </CardTitle>
+          <CardDescription>
+            Complete your {plan?.title || "Plan"} subscription
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="border rounded-lg p-6 bg-muted/50">
+            <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
+            <div className="flex justify-between mb-2">
+              <span>Plan Price</span>
+              <span>{plan?.price}/month</span>
+            </div>
+            <div className="flex justify-between mb-2">
+              <span>Tax</span>
+              <span>
+                ₹{plan?.price ? parseInt(plan.price) * 0.18 : 0}
+              </span>
+            </div>
+            <div className="border-t pt-2 mt-2">
+              <div className="flex justify-between font-semibold">
+                <span>Total</span>
+                <span>
+                  ₹
+                  {plan?.price
+                    ? parseInt(plan.price) * 1.18
+                    : 0}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="border rounded-lg p-6 bg-muted/50">
+            <h3 className="text-lg font-semibold mb-4">Scan to Pay</h3>
+            <div className="flex flex-col items-center space-y-4">
+              <QrCode className="w-48 h-48" />
+              <p className="text-sm text-muted-foreground text-center">
+                Scan this QR code with your preferred payment app to complete
+                the transaction
+              </p>
+            </div>
+          </div>
+        </CardContent>
+        <CardFooter className="flex flex-col space-y-4">
+          <Button
+            className="w-full"
+            size="lg"
+            onClick={() => navigate("/payment-confirmation")}
+          >
+            <CreditCard className="mr-2 h-4 w-4" />
+            Confirm Payment
+          </Button>
+          <p className="text-xs text-center text-muted-foreground">
+            By confirming payment, you agree to our Terms of Service and Privacy
+            Policy
+          </p>
+        </CardFooter>
+      </Card> */}
+
+      <Card className="w-full shadow-lg border-none bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800">
+        <CardHeader className="pb-4">
+          <div className="flex justify-between items-center">
+            <CardTitle className="text-2xl">Payment Details</CardTitle>
+            <Badge variant="secondary" className="text-sm">
+              {cardInfo.name}
+            </Badge>
+          </div>
+          <CardDescription>Complete your payment for {cardInfo.name}</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <Tabs defaultValue="summary" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 mb-4">
+              <TabsTrigger value="summary">Order Summary</TabsTrigger>
+              <TabsTrigger value="payment">Payment Method</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="summary" className="space-y-4">
+              <div className="rounded-lg p-6 bg-slate-50 dark:bg-slate-900 border">
+                <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
+                <div className="space-y-3">
+                   <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Card Name</span>
+                    <span className="font-medium">{plan.name}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Card Type</span>
+                    <span className="font-medium">{cardInfo.name}</span>
+                  </div>
+                  {/* <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Price</span>
+                    <span>${cardInfo.price}</span>
+                  </div> */}
+
+                   <div className="flex justify-between items-center">
+                          <span className="text-muted-foreground">Maintenance charge</span>
+                          <span>${plan?.price || ""}/month</span>
+                        </div>
+                        {/* <div className="flex justify-between items-center">
+                          <span className="text-muted-foreground">Tax (0%)</span>
+                          <span>{plan?.price ? (Number.parseInt(plan.price) * 0.18).toFixed(2) : ""}</span>
+                        </div> */}
+                       
+                  {/* <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Maintenance charge</span>
+                    <span>${(cardInfo.price * 0.18).toFixed(2)}</span>
+                     <span>0.00</span>
+                  </div> */}
+                  <div className="border-t pt-3 mt-3">
+                    <div className="flex justify-between items-center font-semibold">
+                      <span>Total</span>
+                    <span>${plan?.price || ""}/month</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* <div className="rounded-lg p-6 bg-slate-50 dark:bg-slate-900 border">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-8 bg-slate-200 dark:bg-slate-700 rounded flex items-center justify-center">
+                          <CreditCard className="w-6 h-6 text-slate-700 dark:text-slate-300" />
+                        </div>
+                        <div>
+                          <p className="font-medium">{selectedCard?.type || "Visa Gold"}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {selectedCard?.number || "•••• •••• •••• 4321"}
+                          </p>
+                        </div>
+                      </div>
+                    </div> */}
+            </TabsContent>
+            <TabsContent value="payment" className="space-y-4">
+              <div className="flex flex-col items-center space-y-4">
+                <div className="mb-4">
+                  <label className="block text-sm font-medium mb-1">Select Payment Method</label>
+                  <select
+                    className="w-full p-2 border rounded-md dark:bg-slate-800"
+                    value={selectedOption}
+                    onChange={(e) => setSelectedOption(e.target.value)}
+                  >
+                    <option value="btc">BTC</option>
+                    <option value="eth">ETH</option>
+                    <option value="btct">BTCT</option>
+                  </select>
+                </div>
+                <div className="w-48 h-48 bg-white p-4 rounded-lg flex items-center justify-center">
+                  <img
+                    src={qrImages[selectedOption] || "/placeholder.svg"}
+                    alt={`${selectedOption} QR Code`}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                {/* Payment Code + Copy */}
+                {/* <div className="text-center">
+      <p className="text-sm text-muted-foreground mb-2">Or copy this code:</p>
+      <div className="flex items-center justify-center gap-2">
+        <span className="text-sm bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md select-all">
+          {paymentAddresses[selectedOption]}
+        </span>
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(paymentAddresses[selectedOption]);
+          }}
+          className="px-2 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-md"
+        >
+          Copy
+        </button>
+      </div>
+    </div> */}
+
+                <TabsContent value="payment" className="space-y-4">
+                  <div className="flex flex-col items-center space-y-4">
+                    <PaymentAddressCopy
+                      paymentAddress={paymentAddresses[selectedOption]}
+                      selectedOption={selectedOption}
+                    />
+
+                    <p className="text-sm text-center text-slate-500 dark:text-slate-400 max-w-md">
+                      Scan the QR code with your crypto wallet or copy the address above to complete the transaction.
+                    </p>
+                  </div>
+                </TabsContent>
+
+                {/* <div className="text-center">
+    <p className="text-sm text-muted-foreground mb-2">Or copy this code:</p>
+    <div className="flex items-center justify-center gap-2">
+      <span className="text-sm bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md select-all">
+        TFrqT2bguF9ATh5kPXdpXpDFQNAPLDQhSs
+      </span>
+      <button
+        onClick={() => {
+          navigator.clipboard.writeText("TFrqT2bguF9ATh5kPXdpXpDFQNAPLDQhSs");
+        }}
+        className="px-2 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-md"
+      >
+        Copy
+      </button>
+    </div>
+  </div> */}
+                {/* <p className="text-sm text-muted-foreground text-center max-w-md">
+    Scan this QR code with your preferred payment app or paste the code above to complete the transaction.
+  </p> */}
+              </div>
+            </TabsContent>
+            {/* <div className="rounded-lg p-6 bg-slate-50 dark:bg-slate-900 border">
+                      <h3 className="text-lg font-semibold mb-4">Scan to Pay</h3>
+                      <div className="mb-4">
+            <label className="block text-sm font-medium mb-1">Select Payment Method</label>
+            <select
+              className="w-full p-2 border rounded-md dark:bg-slate-800"
+              value={selectedOption}
+              onChange={(e) => setSelectedOption(e.target.value)}
+            >
+              <option value="btc">BTC</option>
+              <option value="abc">ABC</option>
+              <option value="dcs">DCS</option>
+            </select>
+          </div>
+                      <div className="flex flex-col items-center space-y-4">
+                        <div className="w-48 h-48 bg-white p-4 rounded-lg flex items-center justify-center">
+                        <img
+                src={qrImages[selectedOption] || "/placeholder.svg"}
+                alt={`${selectedOption} QR Code`}
+                className="w-full h-full object-contain"
+              />
+                        </div>
+                        <p className="text-sm text-muted-foreground text-center max-w-md">
+                          Scan this QR code with your preferred payment app to complete the transaction
+                        </p>
+                      </div>
+                    </div> */}
+            {/* </TabsContent> */}
+          </Tabs>
+        </CardContent>
+
+        <CardFooter className="flex flex-col space-y-4 pt-2 pb-6">
+          <Button className="w-full" size="lg" onClick={() => navigate("/payment-confirmation")}>
+            <CreditCard className="mr-2 h-4 w-4" />
+            Confirm Payment
+          </Button>
+          <p className="text-xs text-center text-muted-foreground">
+            By confirming payment, you agree to our Terms of Service and Privacy Policy*
+          </p>
+        </CardFooter>
+      </Card>
+    </motion.div>
+  )
+
+  if (showPayment) {
+    return <PaymentPage />
+  }
+
+  return (
+    <div className="container mx-auto p-4 space-y-6 md:px-44  min-h-[100vh]">
+      <div className="flex flex-col sm:flex-row justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" onClick={() => navigate("/dashboard-for-user")} className="mr-4">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back to Plans
+          </Button>
+          <h1 className="text-xl font-semibold">Card List</h1>
+        </div>
+        <div className="flex items-center gap-4">
+          <Select value={filter} onValueChange={setFilter}>
+            <SelectTrigger className="w-[100px]">
+              <SelectValue placeholder="Filter" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All</SelectItem>
+              <SelectItem value="active">Active</SelectItem>
+              <SelectItem value="inactive">Inactive</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <div className="flex items-center border rounded-lg">
+            <Button
+              variant="ghost"
+              size="icon"
+              className={!isGridView ? "bg-muted" : ""}
+              onClick={() => setIsGridView(false)}
+            >
+              <LayoutList className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={isGridView ? "bg-muted" : ""}
+              onClick={() => setIsGridView(true)}
+            >
+              <Grid2X2 className="h-4 w-4" />
+            </Button>
+          </div>
+
+          <Button onClick={handleAddCard}>New Card</Button>
+        </div>
+      </div>
+
+      <div className="relative">
+        <div
+          id="card-container"
+          className={`
+            ${isGridView ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" : "flex overflow-x-auto gap-4"}
+            scroll-smooth py-2 md:px-20
+          `}
+        >
+          {filteredCards.map((card) => (
+            <div
+              key={card.id}
+              className={`
+                ${isGridView ? "" : "flex-none"}
+                w-[320px] h-[200px] rounded-xl overflow-hidden
+                transition-transform hover:scale-105 cursor-pointer
+              `}
+              onClick={() => handleCardSelect(card)}
+            >
+              <div className="w-full h-full bg-gradient-to-br from-blue-900 to-blue-950 relative">
+                <img
+                  src={card.imageUrl || "/placeholder.svg"}
+                  alt={`Card ${card.id}`}
+                  className="w-full h-full object-cover"
+                />
+                <span
+                  className={`
+                    absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium
+                    ${card.status === "Active" ? "bg-green-500/20 text-green-500" : "bg-gray-500/20 text-gray-500"}
+                  `}
+                >
+                  {card.status}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {!isGridView && (
+          <>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 rounded-full shadow-lg hidden md:flex"
+              onClick={() => scroll("left")}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 rounded-full shadow-lg hidden md:flex"
+              onClick={() => scroll("right")}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </>
+        )}
+      </div>
+
+      <div className="bg-gray-50 rounded-lg p-6 mt-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-center md:text-left">
+            <h2 className="text-2xl font-bold mb-4">Get a card to control your expenses</h2>
+            <Button variant="outline" onClick={handleAddCard}>
+              Issue a new card
+            </Button>
+          </div>
+          <img
+            src="/iBlog_1060X400_1-1.jpg"
+            alt="Card stack illustration"
+            className="w-full max-w-sm aspect-video bg-gradient-to-br from-purple-600 to-purple-900 rounded-xl"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+export default SeparateCardList
