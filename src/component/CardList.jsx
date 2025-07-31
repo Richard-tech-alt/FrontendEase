@@ -770,7 +770,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CreditCard} from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import PaymentAddressCopy from "./PaymentAddressCOpy";
+// import PaymentAddressCopy from "./PaymentAddressCOpy";
 
 const CardDashboard = () => {
   const navigate = useNavigate();
