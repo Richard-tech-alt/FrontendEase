@@ -263,8 +263,8 @@ const CreditScoreChecker = lazy(() => import("./pages/Home/component/Features/Cr
 const NewCheckerCards = lazy(() => import("./pages/Home/component/Features/NewCheckerCard"));
 const CardManagement = lazy(() => import("./pages/Home/component/Features/CardManagement"));
 const ApplyCardManagement = lazy(() => import("./component/ApplyNowCardManagement"));
-const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/privacy"));
-const TermsOfUse = lazy(() => import("./pages/TermsOfUse/terms"));
+// const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/privacy"));
+// const TermsOfUse = lazy(() => import("./pages/TermsOfUse/terms"));
 const AboutUsFooter = lazy(() => import("./pages/About/About"));
 const CardLimitations = lazy(() => import("./pages/HelpCenter/HelpCenter"));
 
