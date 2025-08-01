@@ -280,7 +280,7 @@
 
 
 import { useState, useEffect } from "react"
-import { useAccount } from "wagmi"
+// import { useAccount } from "wagmi"
 
 import {
   CreditCard,
@@ -300,7 +300,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 
 const MainHero = () => {
-  const {  isConnected } = useAccount()
+  // const {  isConnected } = useAccount()
   const [setCurrentTestimonial] = useState(0)
   const navigate = useNavigate()
 

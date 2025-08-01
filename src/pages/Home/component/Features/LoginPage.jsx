@@ -133,7 +133,7 @@ export default function LoginPage() {
   
       try {
         const response = await fetch(
-          "https://wallentcardwithauthentication.onrender.com/auth/login",
+          "https://sub.easewithdraw.com/auth/login",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

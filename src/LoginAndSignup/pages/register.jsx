@@ -26,7 +26,7 @@
 
 // // // // //     try {
 // // // // //       const response = await fetch(
-// // // // //         "https://wallentcardwithauthentication.onrender.com/auth/register",
+// // // // //         "https://sub.easewithdraw.com/auth/register",
 // // // // //         {
 // // // // //           method: "POST",
 // // // // //           headers: { "Content-Type": "application/json" },
@@ -247,7 +247,7 @@
 
 // // // //     try {
 // // // //       const response = await fetch(
-// // // //         "https://wallentcardwithauthentication.onrender.com/auth/register",
+// // // //         "https://sub.easewithdraw.com/auth/register",
 // // // //         {
 // // // //           method: "POST", 
 // // // //           headers: { "Content-Type": "application/json" },
@@ -481,7 +481,7 @@
 // // //     const data = { username, email, phoneNumber, password };
 // // //     try {
 // // //             const response = await fetch(
-// // //               "https://wallentcardwithauthentication.onrender.com/auth/register",
+// // //               "https://sub.easewithdraw.com/auth/register",
 // // //               {
 // // //                 method: "POST", 
 // // //                 headers: { "Content-Type": "application/json" },
@@ -492,7 +492,7 @@
 
 // // //     // try {
 // // //     //   const response = await fetch(
-// // //     //     "https://wallentcardwithauthentication.onrender.com/auth/register",
+// // //     //     "https://sub.easewithdraw.com/auth/register",
 // // //     //     {
 // // //     //       method: "POST", 
 // // //     //       headers: { "Content-Type": "application/json" },
@@ -527,7 +527,7 @@
 
 // // //     try {
 // // //       const response = await fetch(
-// // //         "https://wallentcardwithauthentication.onrender.com/auth/verify-otp",
+// // //         "https://sub.easewithdraw.com/auth/verify-otp",
 // // //         {
 // // //           method: "POST",
 // // //           headers: { "Content-Type": "application/json" },

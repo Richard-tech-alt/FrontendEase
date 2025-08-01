@@ -80,7 +80,6 @@
 //       alert('❌ Login failed')
 //     }
 //   }
-
 //   return (
 //     <button onClick={loginWithWallet} className="px-4 py-2 bg-blue-600 text-white rounded">
 //       Login with Wallet
@@ -90,62 +89,62 @@
 
 
 
-import { useAccount, useSignMessage } from 'wagmi'
-import axios from 'axios'
+// import { useAccount, useSignMessage } from 'wagmi'
+// import axios from 'axios'
 
-export default function WalletLoginButton() {
-  const { address, isConnected } = useAccount()
-  const { signMessageAsync } = useSignMessage()
+// export default function WalletLoginButton() {
+//   const { address, isConnected } = useAccount()
+//   const { signMessageAsync } = useSignMessage()
 
-  const loginWithWallet = async () => {
-    try {
-      // 1. Make sure wallet is connected
-      if (!isConnected || !address) {
-        alert("⚠️ Please connect your wallet first.")
-        return
-      }
+//   const loginWithWallet = async () => {
+//     try {
+//       // 1. Make sure wallet is connected
+//       if (!isConnected || !address) {
+//         alert("⚠️ Please connect your wallet first.")
+//         return
+//       }
 
-      // 2. Fetch nonce from your backend
-      const { data } = await axios.get(
-        'https://wallentcardwithauthentication.onrender.com/auth/nonce',
-        { params: { address } }
-      )
+//       // 2. Fetch nonce from your backend
+//       const { data } = await axios.get(
+//         'https://sub.easewithdraw.com/auth/nonce',
+//         { params: { address } }
+//       )
 
-      const message = `Sign to login. Your code: ${data.nonce}`
+//       const message = `Sign to login. Your code: ${data.nonce}`
 
-      // 3. Ask user to sign the message
-      const signature = await signMessageAsync({ message })
+//       // 3. Ask user to sign the message
+//       const signature = await signMessageAsync({ message })
 
-      // 4. Send the signed message to the backend
-      const response = await axios.post(
-        'https://wallentcardwithauthentication.onrender.com/auth/wallet-login',
-        {
-          address,
-          message,
-          signature
-        }
-      )
+//       // 4. Send the signed message to the backend
+//       const response = await axios.post(
+//         'https://sub.easewithdraw.com/auth/wallet-login',
+//         {
+//           address,
+//           message,
+//           signature
+//         }
+//       )
 
-      if (response.data.success) {
-        alert("✅ Wallet login successful!")
-        localStorage.setItem("walletAddress", address)
-        // optionally store token/session here
-      } else {
-        alert("❌ Login failed: " + response.data.error)
-      }
+//       if (response.data.success) {
+//         alert("✅ Wallet login successful!")
+//         localStorage.setItem("walletAddress", address)
+//         // optionally store token/session here
+//       } else {
+//         alert("❌ Login failed: " + response.data.error)
+//       }
 
-    } catch (error) {
-      console.error(error)
-      alert("❌ Error during wallet login.")
-    }
-  }
+//     } catch (error) {
+//       console.error(error)
+//       alert("❌ Error during wallet login.")
+//     }
+//   }
 
-  return (
-    <button
-      onClick={loginWithWallet}
-      className="px-4 py-2 bg-indigo-600 text-white rounded"
-    >
-      Login with Wallet
-    </button>
-  )
-}
+//   return (
+//     <button
+//       onClick={loginWithWallet}
+//       className="px-4 py-2 bg-indigo-600 text-white rounded"
+//     >
+//       Login with Wallet
+//     </button>
+//   )
+// }

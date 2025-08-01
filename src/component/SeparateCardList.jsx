@@ -511,6 +511,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, CreditCard } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import PaymentAddressCopy from "./PaymentAddressCopy"
 // import PaymentAddressCopy from "./PaymentAddressCOpy"
 
 const SeparateCardList = () => {

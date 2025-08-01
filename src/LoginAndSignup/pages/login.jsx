@@ -20,7 +20,7 @@
 
 // //     try {
 // //       const response = await fetch(
-// //         "https://wallentcardwithauthentication.onrender.com/auth/login",
+// //         "https://sub.easewithdraw.com/auth/login",
 // //         {
 // //           method: "POST",
 // //           headers: { "Content-Type": "application/json" },
@@ -378,7 +378,7 @@ export default Login;
 //     const data = { email, password }
 
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/login", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/login", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify(data),

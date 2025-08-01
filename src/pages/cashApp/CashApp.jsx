@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom'
 
 import CardLandingPage from "@/components/ui/Hero_for_Cards"
 import cashapp from "../../assets/images/cards/Cashapp.png";
+import Hero from './components/Hero'
 // import ShinyButton from '@/components/ui/ShinyButton'
 
 const CashApp = () => {
@@ -39,7 +40,7 @@ const CashApp = () => {
           { label: "Crypto Rewards", value: "3%" },
         ]}
       />
-            <Hero />
+            <Hero/>
             <div className="px-8 md:px-32 mx-auto py-16 bg-white">
                 {/* Main Heading */}
                 <div className="text-center mb-16">

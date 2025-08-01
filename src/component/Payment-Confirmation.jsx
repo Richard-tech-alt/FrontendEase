@@ -25,7 +25,7 @@
     
 
 //     try {
-//       await axios.post("https://wallentcardwithauthentication.onrender.com/auth/payment-confirmation", formData, {
+//       await axios.post("https://sub.easewithdraw.com/auth/payment-confirmation", formData, {
 //         headers: {
 //           "Content-Type": "multipart/form-data",
 //         },

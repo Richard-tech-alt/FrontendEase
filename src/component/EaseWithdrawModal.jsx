@@ -732,7 +732,7 @@ const EaseWithdrawModal = ({ isOpen, onClose }) => {
   const [mobileNumber, setMobileNumber] = useState('');
   const [notifyUpdates, setNotifyUpdates] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState(countryCodes[3]); // Default to India
+  const [selectedCountry, setSelectedCountry] = useState(countryCodes[0]); // Default to India
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   

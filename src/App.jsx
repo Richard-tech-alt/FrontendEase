@@ -245,6 +245,8 @@ import ResponsiveWalletDashboard from "./component/ResponsiveWalletDashboard";
 import CallToAction from "./pages/cashApp/components/CallToAction";
 import EaseWithdrawModal from "./component/EaseWithdrawModal";
 import CookiesPopup from "./CookiesPopUp";
+import PrivacyPolicy from "./pages/PrivacyPolicy/Privacy";
+import TermsOfUse from "./pages/TermsOfUse/Terms";
 
 // Lazy loaded pages/components
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -359,9 +361,9 @@ const App = () => {
             <Route path="/new-checker" element={<NewCheckerCards/>}/>
             <Route path="/card-management" element={<CardManagement />}/>
             <Route path="/apply-card" element={<ApplyCardManagement />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
             <Route path="/about-us" element={<AboutUsFooter />} />
-            <Route path="/terms-of-use" element={<TermsOfUse />} />
+            <Route path="/terms-of-use" element={<TermsOfUse/>} />
             <Route path="/help-center" element={<CardLimitations />} />
             <Route path="/CashAppCardLayout" element={<CashAppCardLayout/>} />
             <Route path="/card-selection" element={<NexoCardSelection/>} />

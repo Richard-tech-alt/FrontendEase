@@ -121,6 +121,7 @@ export default function Footer() {
   return (
     <div>
       <TawkToChat />
+      
       <div className="bg-[#190022] text-white py-12 px-6 md:pl-32 lg:pl-56">
       <div className="max-w-7xl mx-auto">
         {/* Main footer navigation */}

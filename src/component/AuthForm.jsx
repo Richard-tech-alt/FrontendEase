@@ -33,7 +33,7 @@
 //     };
   
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/login", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/login", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -100,7 +100,7 @@
 //   //   }
   
 //   //   try {
-//   //     const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/register", {
+//   //     const response = await fetch("https://sub.easewithdraw.com/auth/register", {
 //   //       method: "POST",
 //   //       headers: {
 //   //         "Content-Type": "application/json",
@@ -131,7 +131,7 @@
 //     const otp = e.target.otp.value
 
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/verify-otp", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/verify-otp", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -172,7 +172,7 @@
 //     };
   
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/login", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/login", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -217,7 +217,7 @@
 //   //   }
 
 //   //   try {
-//   //     const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/login", {
+//   //     const response = await fetch("https://sub.easewithdraw.com/auth/login", {
 //   //       method: "POST",
 //   //       headers: {
 //   //         "Content-Type": "application/json",
@@ -242,7 +242,7 @@
 
 //   const handleResendOTP = async (email) => {
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/login", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/login", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -466,7 +466,7 @@ export default function AuthForms() {
     }
   
     try {
-      const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/register", {
+      const response = await fetch("https://sub.easewithdraw.com/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -497,7 +497,7 @@ export default function AuthForms() {
     const otp = e.target.otp.value
 
     try {
-      const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/verify-otp", {
+      const response = await fetch("https://sub.easewithdraw.com/auth/verify-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -537,7 +537,7 @@ export default function AuthForms() {
     }
 
     try {
-      const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/login", {
+      const response = await fetch("https://sub.easewithdraw.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -562,7 +562,7 @@ export default function AuthForms() {
 
   const handleResendOTP = async (email) => {
     try {
-      const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/login", {
+      const response = await fetch("https://sub.easewithdraw.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -816,7 +816,7 @@ export default function AuthForms() {
 //     }
   
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/register", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/register", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -862,7 +862,7 @@ export default function AuthForms() {
 //     const otp = e.target.otp.value
 
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/verify-otp", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/verify-otp", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -918,7 +918,7 @@ export default function AuthForms() {
 //     }
 
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/login", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/login", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -974,7 +974,7 @@ export default function AuthForms() {
 //     toast.info("Sending OTP...", { autoClose: 2000 })
     
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/resend-otp", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/resend-otp", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -1274,7 +1274,7 @@ export default function AuthForms() {
 //     }
   
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/register", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/register", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -1320,7 +1320,7 @@ export default function AuthForms() {
 //     const otp = e.target.otp.value
 
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/verify-otp", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/verify-otp", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -1376,7 +1376,7 @@ export default function AuthForms() {
 //     }
 
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/login", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/login", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -1432,7 +1432,7 @@ export default function AuthForms() {
 //     toast.info("Sending OTP...", { autoClose: 2000 })
     
 //     try {
-//       const response = await fetch("https://wallentcardwithauthentication.onrender.com/auth/resend-otp", {
+//       const response = await fetch("https://sub.easewithdraw.com/auth/resend-otp", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
