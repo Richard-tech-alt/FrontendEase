@@ -493,6 +493,9 @@ const Dashboard = () => {
 
   const cardName = imageData.cardName || "";
 
+  const selectedCardImage = location.state?.selectedCardImage || "";
+// const selectedCardName = location.state?.selectedCardName || "";
+
   
 
   useEffect(() => {
@@ -660,73 +663,6 @@ const handleSelectPlan = (plan) => {
   });
 };
 
-
-//   const plans = [
-//     {
-//       title: "core",
-//       price: "300",
-//       description: "Perfect for starters",
-//       icon: <Shield className="w-8 h-8 text-blue-500" />,
-//       color: "bg-blue-50",
-//       borderColor: "border-blue-200",
-//       limit: "$10,000 credit limit",
-//       imageKey: "core",
-//     },
-//     {
-//       title: "plus",
-//       price: "500",
-//       description: "Most popular choice",
-//       icon: <Zap className="w-8 h-8 text-purple-500" />,
-//       color: "bg-purple-50",
-//       borderColor: "border-purple-200",
-//       popular: true,
-//       limit: "$20,000 credit limit",
-//       imageKey: "plus",
-//     },
-//     {
-//       title: "elite",
-//       price: "1000",
-//       description: "For large teams",
-//       icon: <Crown className="w-8 h-8 text-amber-500" />,
-//       color: "bg-amber-50",
-//       borderColor: "border-amber-200",
-//       limit: "$30,000 credit limit",
-//       imageKey: "elite",
-//     },
-//   ];
-
-//   const handleSelectPlan = (plan) => {
-//     setSelectedPlan(plan);
-//      const selectedImage = imageData?.[plan.imageKey];
-
-//     let planData = {
-//       title: plan.title,
-//       price: plan.price,
-//       period: plan.period,
-//       description: plan.description,
-//       image: selectedImage,
-//       name : cardName
-//     }
-
-//     localStorage.setItem("selectedPlan", JSON.stringify(planData));
-
-//     console.log(plan);
-//     // navigate(`/apply-card`);
-//     // setShowPayment(true);
-
-//     navigate("/CashAppCardLayout", {
-//   state: {
-//     images: {
-//       core:   imageData.core,
-//       plus:   imageData.plus,
-//       elite:  imageData.elite,
-//       cardName,            // ← make sure this is here
-//     }
-//   }
-// });
-
-//   };
-
   const PaymentPage = () => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -852,13 +788,23 @@ const handleSelectPlan = (plan) => {
           </CardHeader>
           
           <CardContent className="space-y-4">
-            {imageData?.[plan.imageKey] && (
+            {/* {imageData?.[plan.imageKey] && (
               <img
                 src={imageData[plan.imageKey]}
                 alt={`${plan.title} image`}
                 className="w-full rounded-lg"
               />
-            )}
+            )} */}
+
+
+        {(imageData?.[plan.imageKey] || selectedCardImage) && (
+  <img
+    src={imageData[plan.imageKey] || selectedCardImage}
+    alt={`${plan.title} image`}
+    className="w-full rounded-lg"
+  />
+)}
+
             
             {/* Key Features Section */}
             <div className="space-y-2">

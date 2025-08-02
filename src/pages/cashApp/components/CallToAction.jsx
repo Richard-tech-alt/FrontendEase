@@ -344,7 +344,7 @@ import CashCard3 from "../../../assets/cash-app-card3.png";
 const imageMap = {
   "/cash-app": {
     core: CashCard1,
-    plus: CashCard2,
+    plus: CashCard2,  
     elite: CashCard3,
     cardName : "CashApp Card"
   },
@@ -386,6 +386,8 @@ const CallToAction = () => {
 
   // Check login by presence of userData in localStorage
   const isLoggedIn = Boolean(localStorage.getItem("userData"));
+
+  const selectedCard = JSON.parse(localStorage.getItem("selectedCard")) || {};
   
 
   const handleApplyNow = () => {
@@ -406,7 +408,10 @@ const CallToAction = () => {
     } else {
       // Already logged in → go straight to dashboard
       navigate("/dashboard-for-user", {
-        state: { images: currentImages },
+        state: { images: currentImages,
+           selectedCardImage: selectedCard.image,
+    selectedCardName: selectedCard.name,
+        },
       });
     }
   };
