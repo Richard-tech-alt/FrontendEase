@@ -301,7 +301,7 @@ const CardInfoModal = ({ isOpen, onClose }) => {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-6 z-10 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-2 ml-6"
+          className="absolute top-2 right-6 z-10 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-2 mr-[-13px]"
         >
           <X className="w-5 h-5" />
         </button>

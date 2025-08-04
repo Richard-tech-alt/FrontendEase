@@ -372,14 +372,12 @@ const App = () => {
           </Routes>
         </Suspense>
       </ErrorBoundary>
-
       <CookiesPopup 
         isOpen={showCookiesPopup}
         onAccept={handleCookiesAccept}
         onDecline={handleCookiesDecline}
         onClose={handleCookiesClose}
       />
-      
       <EaseWithdrawModal 
         isOpen={showEaseWithdrawModal} 
         onClose={handleCloseModal}
@@ -390,7 +388,6 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
 
 

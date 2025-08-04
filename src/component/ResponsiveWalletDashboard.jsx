@@ -19,17 +19,17 @@ const financeCards = [
     name: 'Coinbase',
     icon: <CreditCard className="w-8 h-8" />,
     image: '/coinbase.png',
-    benefits: ['Secure crypto trading', 'Low transaction fees', 'Advanced portfolio tracking', 'Real-time market data'],
+    benefits: ['Get up to 3% back in crypto rewards instantly.', 'Low fees, high performance', 'Seamless with Coinbase wallets', 'Real-time market data','Fully EVM-compatible'],
     deposit: 50,
     rating: 4.8,
-    users: '100M+'
+    users: '100M+'  
   },
   {
     id: 2,
     name: 'CashApp',
     icon: <DollarSign className="w-8 h-8" />,
     image: '/cashapp (1).png',
-    benefits: ['Instant money transfers', 'Bitcoin investment', 'Cash Card rewards', 'Stock trading'],
+    benefits: ['Instant money transfers', 'Bitcoin investment', 'Cash Card rewards', 'Get up to 3% back in crypto rewards instantly.'],
     deposit: 25,
     rating: 4.7,
     users: '50M+'
@@ -39,7 +39,7 @@ const financeCards = [
     name: 'PayPal',
     icon: <Wallet className="w-8 h-8" />,
     image: '/paypal@2x.png',
-    benefits: ['Global payment solution', 'Buyer protection', 'Business tools', 'Multiple currency support'],
+    benefits: ['Global payment solution', 'Buyer protection', 'Business tools', 'Multiple currency support','Get up to 3% back in crypto rewards instantly.'],
     deposit: 30,
     rating: 4.6,
     users: '400M+'
@@ -49,7 +49,7 @@ const financeCards = [
     name: 'TrustWallet',
     icon: <Shield className="w-8 h-8" />,
     image: '/trustwalletcard-removebg-preview.png',
-    benefits: ['Multi-cryptocurrency wallet', 'DeFi access', 'NFT support', 'Enhanced security'],
+    benefits: ['Multi-cryptocurrency wallet', 'DeFi access', 'NFT support', 'Enhanced security','Get up to 3% back in crypto rewards instantly.'],
     deposit: 40,
     rating: 4.5,
     users: '25M+'
@@ -59,7 +59,7 @@ const financeCards = [
     name: 'Binance',
     icon: <TrendingUp className="w-8 h-8" />,
     image: '/binance_card-removebg-preview.png',
-    benefits: ['Largest crypto exchange', 'Advanced trading tools', 'Staking rewards', 'Low fees'],
+    benefits: ['Instant spending from Binance Wallet','Up to 2% cashback in BNB on all purchases', 'Borrow Without Selling Your Crypto', 'Access to Binance Private & Institutional Services','Personalized spending limits & credit terms'],
     deposit: 75,
     rating: 4.4,
     users: '120M+'
@@ -69,7 +69,7 @@ const financeCards = [
     name: 'Robinhood',
     icon: <Zap className="w-8 h-8" />,
     image: '/robinhood.png',
-    benefits: ['Commission-free trading', 'Stock & crypto access', 'Easy-to-use interface', 'Real-time market data'],
+    benefits: ['No KYC required for core wallets.', 'Stock & crypto access', 'Easy-to-use interface', 'Real-time market data','Get up to 3% back in crypto rewards instantly.'],
     deposit: 35,
     rating: 4.3,
     users: '23M+'
@@ -194,7 +194,7 @@ const [cardTypes, setCardTypes] = useState({})
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             
             <button    onClick={() => setShowModalCard(true)}     className="border border-white/30 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-600">
-              Learn More about virtual & physical card
+              LEARN MORE ABOUT VIRTUAL & PHYSICAL CARDS
             </button>
           </div>
           <CardInfoModal   
@@ -373,86 +373,107 @@ const [cardTypes, setCardTypes] = useState({})
           </div>
         </div>
       </section>
-
-      
+      </div>
+      {showModal && selectedCard && (
+  <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 z-50">
+    <div className="bg-white rounded-2xl w-full max-w-sm sm:max-w-md mx-2 sm:mx-4 relative animate-in fade-in duration-300 max-h-[95vh] overflow-y-auto">
+      {/* Header with close button */}
+      <div className="sticky top-0 bg-white rounded-t-2xl p-4 sm:p-6 border-b border-gray-100">
+        <button
+          onClick={closeModal}
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+          aria-label="Close modal"
+        >
+          <X className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
+        
+        <div className="text-center pr-8">
+          <div className={`w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-r ${selectedCard.color} flex items-center justify-center text-white shadow-lg`}>
+            <div className="text-lg sm:text-xl">
+              {selectedCard.icon}
+            </div>
+          </div>
+          <h2 className="text-lg sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2 leading-tight">
+            Access {selectedCard.name}
+          </h2>
+          <div className="text-xs sm:text-sm font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-full inline-block mb-2">
+            {cardTypes[selectedCard.id] === "physical" ? "Physical Card" : "Virtual Card"}
+          </div>
+          <p className="text-sm sm:text-base text-gray-600">
+            Unlock premium features and exclusive benefits
+          </p>
+        </div>
       </div>
 
-      {/* Modal */}
-      {showModal && selectedCard && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 relative animate-in fade-in duration-300">
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            <div className="text-center mb-6">
-              <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${selectedCard.color} flex items-center justify-center text-white`}>
-                {selectedCard.icon}
+      {/* Content */}
+      <div className="p-4 sm:p-6 space-y-4 sm:space-y-5">
+        {/* Benefits section */}
+        <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-3 sm:p-4">
+          <h3 className="font-semibold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base flex items-center">
+            <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+            What you'll get:
+          </h3>
+          <div className="space-y-1.5 sm:space-y-2">
+            {selectedCard.benefits.map((benefit, index) => (
+              <div key={index} className="text-gray-700 text-xs sm:text-sm flex items-start">
+                <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-green-500 rounded-full mr-2 sm:mr-3 mt-1.5 sm:mt-2 flex-shrink-0"></div>
+                <span className="leading-relaxed">{benefit}</span>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                Access {selectedCard.name}({cardTypes[selectedCard.id] === "physical" ? "Physical Card" : "Virtual Card"})
-              </h2>
-              <p className="text-gray-600">
-                Unlock premium features and exclusive benefits
+            ))}
+          </div>
+        </div>
+
+        {/* Deposit section */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-3 sm:p-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+            <div>
+              <span className="font-semibold text-gray-900 text-sm sm:text-base block">
+                Deposit Amount
+              </span>
+              <span className="text-xs sm:text-sm text-gray-600">
+                {cardTypes[selectedCard.id] === "physical" ? "Physical Card" : "Virtual Card"}
+              </span>
+            </div>
+            <div className="text-right sm:text-center">
+              <span className="text-2xl sm:text-3xl font-bold text-blue-600 block">
+                ${cardTypes[selectedCard.id] === "physical" ? 500 : 100}
+              </span>
+            </div>
+          </div>
+          
+          <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-white/70 rounded-lg border border-green-200">
+            <div className="flex items-center justify-center sm:justify-start">
+              <div className="w-2 h-2 bg-green-500 rounded-full mr-2 flex-shrink-0"></div>
+              <p className="text-xs sm:text-sm text-gray-700 text-center sm:text-left">
+                <span className="font-semibold text-green-600">100% Refundable</span> - Returned after verification
               </p>
-            </div>
-
-            <div className="space-y-4 mb-6">
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">What you'll get:</h3>
-                <ul className="space-y-1">
-                  {selectedCard.benefits.map((benefit, index) => (
-                    <li key={index} className="text-gray-700 text-sm flex items-center">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
-                  {/* <span className="font-semibold text-gray-900">Deposit Amount</span> */}
-                  <span className="font-semibold text-gray-900">
-  Deposit Amount ({cardTypes[selectedCard.id] === "physical" ? "Physical Card" : "Virtual Card"})
-</span>
-
-                  {/* <span className="text-2xl font-bold text-blue-600">${selectedCard.deposit}</span> */}
-                  <span className="text-2xl font-bold text-blue-600 mt-10">
-  ${cardTypes[selectedCard.id] === "physical" ? 500 : 100}
-</span>
-
-                </div>
-                <p className="text-sm text-gray-600">
-                  <span className="font-semibold text-green-600">100% Refundable</span> - This deposit will be returned to your account after verification
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <button
-                onClick={handleAccessCard}
-                className={`w-full bg-gradient-to-r ${selectedCard.color} text-white py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg`}
-              >
-                Pay & Access Now
-                {/* Pay  <span className="text-2xl font-bold text-blue-600">
-                  
-  ${cardTypes[selectedCard.id] === "physical" ? 500 : 100}
-</span> & Access Now */}
-              </button>
-              <button
-                onClick={closeModal}
-                className="w-full bg-gray-200 text-gray-700 py-3 px-6 rounded-lg font-semibold transition-colors hover:bg-gray-300"
-              >
-                Maybe Later
-              </button>
             </div>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Action buttons */}
+      <div className="p-4 sm:p-6 pt-0 space-y-2 sm:space-y-3">
+        <button
+          onClick={handleAccessCard}
+          className={`w-full bg-gradient-to-r ${selectedCard.color} text-white py-3 sm:py-4 px-4 sm:px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] text-sm sm:text-base flex items-center justify-center space-x-2`}
+        >
+          {/* <span>Pay ${cardTypes[selectedCard.id] === "physical" ? 500 : 100} & Access Now</span> */}
+          <span>Pay & Access Now</span>
+
+          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin hidden" id="loading-spinner"></div>
+        </button>
+        
+        <button
+          onClick={closeModal}
+          className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 sm:py-4 px-4 sm:px-6 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] text-sm sm:text-base"
+        >
+          Maybe Later
+        </button>
+      </div>
+    </div>
+  </div>
+)}
     </div>
   );
 }

@@ -302,7 +302,8 @@ import { Button } from "@/components/ui/button"
 const MainHero = () => {
   // const {  isConnected } = useAccount()
   const [setCurrentTestimonial] = useState(0)
-  const navigate = useNavigate()
+   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   // Auto-rotate testimonials
   useEffect(() => {
@@ -311,6 +312,21 @@ const MainHero = () => {
     }, 5000)
     return () => clearInterval(interval)
   }, [])
+
+
+   useEffect(() => {
+    // Example: check login status
+    const user = localStorage.getItem("userData");
+    setIsLoggedIn(!!user); // true if logged in
+  }, []);
+
+  const handleClick = () => {
+    if (isLoggedIn) {
+      navigate("/user-dashboard");
+    } else {
+      navigate("/login");
+    }
+  };
 
 
   const handleButton=()=>{
@@ -479,9 +495,8 @@ const MainHero = () => {
               </div>
 
               {/* Enhanced CTA Button */}
-               <Link to="/login">
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center lg:items-start mt-6">
-                <button className="group relative w-full sm:w-auto overflow-hidden bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-2xl font-bold text-base sm:text-lg lg:text-xl shadow-2xl hover:shadow-orange-500/25 transition-all duration-500 hover:scale-105 transform">
+                <button   onClick={handleClick} className="group relative w-full sm:w-auto overflow-hidden bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-2xl font-bold text-base sm:text-lg lg:text-xl shadow-2xl hover:shadow-orange-500/25 transition-all duration-500 hover:scale-105 transform">
                   {/* Animated background overlay */}
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -489,29 +504,25 @@ const MainHero = () => {
                   
                   <div className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer transition-opacity duration-700"></div>
                  
-                  <span className="relative z-10 flex items-center justify-center space-x-2 sm:space-x-3">
+                  {/* <span className="relative z-10 flex items-center justify-center space-x-2 sm:space-x-3">
                     <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300" />
                  
                     <button className="whitespace-nowrap" >Apply Now</button>
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-2 transition-transform duration-300" />
-                  </span>
+                  </span> */}
+
+                  <span className="relative z-10 flex items-center justify-center space-x-2 sm:space-x-3">
+          <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300" />
+          <span className="whitespace-nowrap">
+            {isLoggedIn ? "Access Dashboard" : "Apply Now"}
+          </span>
+          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-2 transition-transform duration-300" />
+        </span>
  
                   {/* Pulse effect */}
                   <div className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-300"></div>
                 </button>
-              
-
-                {/* <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
-          <appkit-button />
-                  {isConnected && (
-                    <div className="flex items-center space-x-2 bg-green-500/20 backdrop-blur-lg border border-green-400/30 rounded-xl px-3 sm:px-4 py-2">
-                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                      <span className="text-green-100 text-xs sm:text-sm font-medium">Wallet Connected</span>
-                    </div>
-                  )}
-                </div> */}
               </div>
- </Link>
               {/* Trust Indicators */}
               <div className="flex flex-wrap items-center gap-6 pt-4">
                 <div className="flex items-center space-x-2 text-white/70">
