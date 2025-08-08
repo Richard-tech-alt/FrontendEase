@@ -190,7 +190,7 @@ const CardLandingPage = ({
             </p>
           </div>
         )}
-
+        
         <CallToAction/>
 
         {/* {showTerms && termsText && (

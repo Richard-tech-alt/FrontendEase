@@ -363,8 +363,8 @@ const CardLimitations = () => {
 
       {/* Table 1: Card Application */}
       {renderStandardTable("1. Card application", [
-        ["Virtual card application", "10.00 USD", ""],
-        ["Physical card application", "100.00 USD", ""],
+        ["Virtual card application", "100.00 USD", ""],
+        ["Physical card application", "500.00 USD", ""],
         ["Mailing of your physical card", "Waived", ""],
         ["Replacement of virtual card", (
           <>

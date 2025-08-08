@@ -331,7 +331,6 @@
 // // //     </div>
 // // //   );
 // // // };
-
 // // // export default CallToAction;
 
 
@@ -340,43 +339,52 @@ import { useNavigate, useLocation } from "react-router-dom";
 import CashCard1 from "../../../assets/cash-app-card1.png";
 import CashCard2 from "../../../assets/cash-app-card2.png";
 import CashCard3 from "../../../assets/cash-app-card3.png";
+import DownloadModal from "./DownloadModelCashapp";
+import { useState } from "react";
+import { Download } from "lucide-react";
 
 const imageMap = {
   "/cash-app": {
     core: CashCard1,
     plus: CashCard2,  
     elite: CashCard3,
-    cardName : "CashApp Card"
+    cardName : "CashApp Card",
+     qrCode: "/x0b9lqec.svg"
   },
   "/binance": {
     core: "/Flip Hor.png",
     plus: "/Premium.svg",
     elite: "/infinite.svg",
-    cardName : "Nexo Card"
+    cardName : "Nexo Card",
+     qrCode: "/qrcodes/robinhood.svg"
   },
   "/paypal": {
     core: "/Credit card mockup (3).png",
     plus: "/Credit carPaypal mockup.svg",
     elite: "/Credit card mockup.svg",
-    cardName : "Paypal Card"
+    cardName : "Paypal Card",
+     qrCode: "/qrcodes/robinhood.svg"
   },
   "/coinbase": {
     core: "/coinbase-removebg-preview.png",
     plus: "/coinbase-removebg-preview.png",
     elite: "/coinbase-removebg-preview.png",
-    cardName : "Coinbase Card"
+    cardName : "Coinbase Card",
+     qrCode: "/qrcodes/robinhood.svg"
   },
   "/robinhood": {
     core: "/RH start.svg",
     plus: "/RH Grow.svg",
     elite: "/Prime.svg",
-    cardName : "robinhood Card"
+    cardName : "robinhood Card",
+     qrCode: "/qrcodes/robinhood.svg"
   },
   "/trustwallet": {
     core: "/newimage-removebg-preview.png",
     plus: "/newimage-removebg-preview.png",
     elite: "/newimage-removebg-preview.png",
-    cardName : "TrustWallet Card"
+    cardName : "TrustWallet Card",
+     qrCode: "/qrcodes/robinhood.svg"
   },
 };
 
@@ -388,6 +396,8 @@ const CallToAction = () => {
   const isLoggedIn = Boolean(localStorage.getItem("userData"));
 
   const selectedCard = JSON.parse(localStorage.getItem("selectedCard")) || {};
+
+   const [showDownload, setShowDownload] = useState(false);
   
 
   const handleApplyNow = () => {
@@ -432,6 +442,24 @@ const CallToAction = () => {
       >
         Apply Now
       </button>
+        <button 
+                onClick={() => setShowDownload(true)}
+                className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 mt-10"
+              >
+                <Download size={20} />
+                Download App
+              </button>
+              {/* <DownloadModal 
+        isOpen={showDownload} 
+        onClose={() => setShowDownload(false)}
+      /> */}
+      <DownloadModal 
+  isOpen={showDownload} 
+  onClose={() => setShowDownload(false)}
+  appName={imageMap[location.pathname]?.cardName || "Our App"}
+  qrCode={imageMap[location.pathname]?.qrCode}
+/>
+
     </div>
   );
 };

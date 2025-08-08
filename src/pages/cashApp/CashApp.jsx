@@ -13,7 +13,6 @@ import FeaturesSectionReversed from './components/FeaturesSectionReversed'
 import FAQAccordion from './components/FAQAccordion'
 import CallToAction from './components/CallToAction'
 import { Link } from 'react-router-dom'
-
 import CardLandingPage from "@/components/ui/Hero_for_Cards"
 import cashapp from "../../assets/images/cards/Cashapp.png";
 import Hero from './components/Hero'
@@ -28,6 +27,7 @@ const CashApp = () => {
         headline={["Earn Bitcoin", "on every purchase"]}
         cardImage= {cashapp}
         description="Get up to 3% back in crypto rewards instantly."
+        downloadApp="Download App"
         buttonText="Apply Now"
         // onButtonClick={() => alert("Navigating to application...")}
         termsText="Crypto rewards may fluctuate in value."
