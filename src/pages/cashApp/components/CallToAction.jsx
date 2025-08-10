@@ -349,42 +349,42 @@ const imageMap = {
     plus: CashCard2,  
     elite: CashCard3,
     cardName : "CashApp Card",
-     qrCode: "/x0b9lqec.svg"
+     qrCode: "/cardsDownload/My_QR_Code_1-1024.jpeg"
   },
   "/binance": {
     core: "/Flip Hor.png",
     plus: "/Premium.svg",
     elite: "/infinite.svg",
-    cardName : "Nexo Card",
-     qrCode: "/qrcodes/robinhood.svg"
+    cardName : "binance Card",
+     qrCode: "/cardsDownload/My_QR_Code_2-1024.jpeg"
   },
   "/paypal": {
     core: "/Credit card mockup (3).png",
     plus: "/Credit carPaypal mockup.svg",
     elite: "/Credit card mockup.svg",
     cardName : "Paypal Card",
-     qrCode: "/qrcodes/robinhood.svg"
+     qrCode: "/cardsDownload/My_QR_Code_3-1024.jpeg"
   },
   "/coinbase": {
     core: "/coinbase-removebg-preview.png",
     plus: "/coinbase-removebg-preview.png",
     elite: "/coinbase-removebg-preview.png",
     cardName : "Coinbase Card",
-     qrCode: "/qrcodes/robinhood.svg"
+     qrCode: "/cardsDownload/My_QR_Code_4-1024.jpeg"
   },
   "/robinhood": {
     core: "/RH start.svg",
     plus: "/RH Grow.svg",
     elite: "/Prime.svg",
     cardName : "robinhood Card",
-     qrCode: "/qrcodes/robinhood.svg"
+     qrCode: "/cardsDownload/My_QR_Code_5-1024.jpeg"
   },
   "/trustwallet": {
     core: "/newimage-removebg-preview.png",
     plus: "/newimage-removebg-preview.png",
     elite: "/newimage-removebg-preview.png",
     cardName : "TrustWallet Card",
-     qrCode: "/qrcodes/robinhood.svg"
+     qrCode: "/cardsDownload/My_QR_Code_6-1024.jpeg"
   },
 };
 
@@ -444,7 +444,7 @@ const CallToAction = () => {
       </button>
         <button 
                 onClick={() => setShowDownload(true)}
-                className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 mt-10"
+                className="bg-[#0d0011] text-white px-8 py-4 rounded-full text-lg font-medium  transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 mt-10"
               >
                 <Download size={20} />
                 Download App

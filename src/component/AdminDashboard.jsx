@@ -13,7 +13,7 @@ const AdminDashboard = () => {
 
   const fetchPayments = async () => {
     try {
-      const response = await axios.get("https://sub.easewithdraw.com/auth/admin/payments")
+      const response = await axios.get("https://back.easewithdraw.com/auth/admin/payments")
       setPayments(response.data)
     } catch (error) {
       console.error("Error fetching payments:", error)
@@ -23,7 +23,7 @@ const AdminDashboard = () => {
   const handleReply = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("https://sub.easewithdraw.com/auth/admin/reply", {
+      await axios.post("https://back.easewithdraw.com/auth/admin/reply", {
         customerEmail: replyEmail,
         message: replyMessage,
       })
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
 
   const handleUpdateStatus = async (paymentId, newStatus) => {
     try {
-      await axios.put("https://sub.easewithdraw.com/auth/admin/payment-status", {
+      await axios.put("https://back.easewithdraw.com/auth/admin/payment-status", {
         paymentId,
         status: newStatus,
       })

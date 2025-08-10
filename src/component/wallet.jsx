@@ -106,7 +106,7 @@
 
 //       // 2. Fetch nonce from your backend
 //       const { data } = await axios.get(
-//         'https://sub.easewithdraw.com/auth/nonce',
+//         'https://back.easewithdraw.com/auth/nonce',
 //         { params: { address } }
 //       )
 
@@ -117,7 +117,7 @@
 
 //       // 4. Send the signed message to the backend
 //       const response = await axios.post(
-//         'https://sub.easewithdraw.com/auth/wallet-login',
+//         'https://back.easewithdraw.com/auth/wallet-login',
 //         {
 //           address,
 //           message,

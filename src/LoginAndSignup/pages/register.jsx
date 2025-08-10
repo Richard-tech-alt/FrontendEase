@@ -26,7 +26,7 @@
 
 // // // // //     try {
 // // // // //       const response = await fetch(
-// // // // //         "https://sub.easewithdraw.com/auth/register",
+// // // // //         "https://back.easewithdraw.com/auth/register",
 // // // // //         {
 // // // // //           method: "POST",
 // // // // //           headers: { "Content-Type": "application/json" },
@@ -247,7 +247,7 @@
 
 // // // //     try {
 // // // //       const response = await fetch(
-// // // //         "https://sub.easewithdraw.com/auth/register",
+// // // //         "https://back.easewithdraw.com/auth/register",
 // // // //         {
 // // // //           method: "POST", 
 // // // //           headers: { "Content-Type": "application/json" },
@@ -481,7 +481,7 @@
 // // //     const data = { username, email, phoneNumber, password };
 // // //     try {
 // // //             const response = await fetch(
-// // //               "https://sub.easewithdraw.com/auth/register",
+// // //               "https://back.easewithdraw.com/auth/register",
 // // //               {
 // // //                 method: "POST", 
 // // //                 headers: { "Content-Type": "application/json" },
@@ -492,7 +492,7 @@
 
 // // //     // try {
 // // //     //   const response = await fetch(
-// // //     //     "https://sub.easewithdraw.com/auth/register",
+// // //     //     "https://back.easewithdraw.com/auth/register",
 // // //     //     {
 // // //     //       method: "POST", 
 // // //     //       headers: { "Content-Type": "application/json" },
@@ -527,7 +527,7 @@
 
 // // //     try {
 // // //       const response = await fetch(
-// // //         "https://sub.easewithdraw.com/auth/verify-otp",
+// // //         "https://back.easewithdraw.com/auth/verify-otp",
 // // //         {
 // // //           method: "POST",
 // // //           headers: { "Content-Type": "application/json" },
@@ -1308,7 +1308,7 @@
 
 //     try {
 //       const response = await fetch(
-//         "https://sub.easewithdraw.com/auth/register",
+//         "https://back.easewithdraw.com/auth/register",
 //         {
 //           method: "POST", 
 //           headers: { "Content-Type": "application/json" },
@@ -1358,7 +1358,7 @@
 //       console.log("Sending OTP verification data:", verifyData);
       
 //       const response = await fetch(
-//         "https://sub.easewithdraw.com/auth/verify-otp",
+//         "https://back.easewithdraw.com/auth/verify-otp",
 //         {
 //           method: "POST",
 //           headers: { "Content-Type": "application/json" },
@@ -1406,7 +1406,7 @@
 //       // Implement the resend OTP functionality
 //       // You'll need to create this endpoint on your backend
 //       const response = await fetch(
-//         "https://sub.easewithdraw.com/auth/resend-otp",
+//         "https://back.easewithdraw.com/auth/resend-otp",
 //         {
 //           method: "POST",
 //           headers: { "Content-Type": "application/json" },
@@ -1956,7 +1956,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch("https://sub.easewithdraw.com/auth/register", {
+      const response = await fetch("https://back.easewithdraw.com/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -2020,7 +2020,7 @@ const Signup = () => {
         otp: otp.toString(),
       }
 
-      const response = await fetch("https://sub.easewithdraw.com/auth/verify-otp", {
+      const response = await fetch("https://back.easewithdraw.com/auth/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(verifyData),
@@ -2064,7 +2064,7 @@ const Signup = () => {
   const handleResendOtp = async () => {
     setLoading(true)
     try {
-      const response = await fetch("https://sub.easewithdraw.com/auth/resend-otp", {
+      const response = await fetch("https://back.easewithdraw.com/auth/resend-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email }),

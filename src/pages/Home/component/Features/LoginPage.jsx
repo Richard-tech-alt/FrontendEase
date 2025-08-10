@@ -133,7 +133,7 @@ export default function LoginPage() {
   
       try {
         const response = await fetch(
-          "https://sub.easewithdraw.com/auth/login",
+          "https://back.easewithdraw.com/auth/login",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

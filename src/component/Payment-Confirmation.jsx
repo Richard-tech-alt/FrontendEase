@@ -25,7 +25,7 @@
     
 
 //     try {
-//       await axios.post("https://sub.easewithdraw.com/auth/payment-confirmation", formData, {
+//       await axios.post("https://back.easewithdraw.com/auth/payment-confirmation", formData, {
 //         headers: {
 //           "Content-Type": "multipart/form-data",
 //         },
@@ -148,7 +148,7 @@ const PaymentConfirmation = () => {
 
     try {
       // Using fetch instead of axios to avoid dependency
-      const response = await fetch("https://sub.easewithdraw.com/auth/payment-confirmation", {
+      const response = await fetch("https://back.easewithdraw.com/auth/payment-confirmation", {
         method: "POST",
         body: formData,
       })

@@ -6728,7 +6728,7 @@
 //       addNotification("success", "Signature received, processing payment...")
 
 //       // Step 4: Send to backend for verification and processing
-//       const response = await fetch("https://sub.easewithdraw.com/api/cards/process-payment", {
+//       const response = await fetch("https://back.easewithdraw.com/api/cards/process-payment", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -6834,7 +6834,7 @@
 
 //       const signature = await signMessageAsync({ message })
 
-//       const response = await fetch("https://sub.easewithdraw.com/api/cards/toggle-status", {
+//       const response = await fetch("https://back.easewithdraw.com/api/cards/toggle-status", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -6879,7 +6879,7 @@
 
 //       const signature = await signMessageAsync({ message })
 
-//       const response = await fetch("https://sub.easewithdraw.com/api/cards/toggle-freeze", {
+//       const response = await fetch("https://back.easewithdraw.com/api/cards/toggle-freeze", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -6926,7 +6926,7 @@
 
 //       const signature = await signMessageAsync({ message })
 
-//       const response = await fetch("https://sub.easewithdraw.com/api/cards/update-limit", {
+//       const response = await fetch("https://back.easewithdraw.com/api/cards/update-limit", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -6973,7 +6973,7 @@
 
 //       const signature = await signMessageAsync({ message })
 
-//       const response = await fetch("https://sub.easewithdraw.com/api/plans/upgrade", {
+//       const response = await fetch("https://back.easewithdraw.com/api/plans/upgrade", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -7009,7 +7009,7 @@
 //       await refetchBalance()
 
 //       // Fetch updated card data from backend
-//       const response = await fetch(`https://sub.easewithdraw.com/api/cards?walletAddress=${address}`)
+//       const response = await fetch(`https://back.easewithdraw.com/api/cards?walletAddress=${address}`)
 //       if (response.ok) {
 //         const updatedCards = await response.json()
 //         setCards(updatedCards)
