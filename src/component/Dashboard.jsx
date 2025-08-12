@@ -1053,3 +1053,346 @@ const PlanCardsMinimal = () => (
   );
 };
 export default Dashboard;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useEffect, useState } from "react";
+// import { motion } from "framer-motion";
+// import {
+//   Card,
+//   CardContent,
+//   CardDescription,
+//   CardFooter,
+//   CardHeader,
+//   CardTitle,
+// } from "@/components/ui/card";
+// import { Button } from "@/components/ui/button";
+// import { Badge } from "@/components/ui/badge";
+// import {
+//   Crown,
+//   CreditCard,
+//   Zap,
+//   Shield,
+//   ArrowLeft,
+//   QrCode,
+//   Star,
+//   Sparkles,
+//   Diamond,
+//   CheckCircle,
+//   Gift,
+//   Users,
+//   TrendingUp
+// } from "lucide-react";
+
+// // Mock useLocation for demonstration - replace with actual import
+// const useLocation = () => ({
+//   state: {
+//     images: {
+//       cardName: "Premium Cash Card",
+//       core: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=400&h=250&fit=crop&crop=center",
+//       plus: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=400&h=250&fit=crop&crop=center",
+//       elite: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=400&h=250&fit=crop&crop=center"
+//     },
+//     selectedCardImage: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=400&h=250&fit=crop&crop=center"
+//   }
+// });
+
+// const Dashboard = () => {
+//   const [showPayment, setShowPayment] = useState(false);
+//   // Mock data for demonstration
+//   const imageData = {
+//     cardName: "Premium Cash Card",
+//     selectedCardImage: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=400&h=250&fit=crop&crop=center"
+//   };
+
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, []);
+
+//   const planData = {
+//     price: 799,
+//     annualPrice: 799,
+//     monthlyPrice: 67
+//   };
+
+//   const allFeatures = [
+//     { icon: <CreditCard className="w-5 h-5" />, text: "Physical & Virtual Visa Card" },
+//     { icon: <Shield className="w-5 h-5" />, text: "Use anywhere Visa is accepted globally" },
+//     { icon: <CheckCircle className="w-5 h-5" />, text: "Apple Pay & Google Pay compatible" },
+//     { icon: <Zap className="w-5 h-5" />, text: "Real-time alerts & instant freeze option" },
+//     { icon: <TrendingUp className="w-5 h-5" />, text: "Direct deposit support" },
+//     { icon: <Gift className="w-5 h-5" />, text: "Unlimited Boosts (rotate anytime)" },
+//     { icon: <Users className="w-5 h-5" />, text: "Premium card designs collection" },
+//     { icon: <Star className="w-5 h-5" />, text: "Priority customer support access" },
+//     { icon: <Diamond className="w-5 h-5" />, text: "No ATM withdrawal fees nationwide" },
+//     { icon: <Sparkles className="w-5 h-5" />, text: "Early direct deposit (2 days faster)" },
+//     { icon: <CheckCircle className="w-5 h-5" />, text: "Advanced spending insights & analytics" },
+//     { icon: <Star className="w-5 h-5" />, text: "3% cashback at major U.S. merchants" },
+//     { icon: <Gift className="w-5 h-5" />, text: "Free wire transfers" },
+//     { icon: <Crown className="w-5 h-5" />, text: "Premium metal card with gold accents" },
+//     { icon: <Shield className="w-5 h-5" />, text: "Full fraud and chargeback protection" },
+//     { icon: <TrendingUp className="w-5 h-5" />, text: "Business tools access (reports, tags)" },
+//     { icon: <Sparkles className="w-5 h-5" />, text: "1.5% cashback at select categories" },
+//     { icon: <Star className="w-5 h-5" />, text: "Early access to new app features" }
+//   ];
+
+//   // Use your original handleSelectPlan logic
+//   const handleSelectPlan = () => {
+//     const selectedImage = imageData?.core || imageData?.plus || imageData?.elite || selectedCardImage;
+
+//     let planDataToSend = {
+//       title: "premium",
+//       price: "799",
+//       period: "year",
+//       description: "Complete premium card experience with all features included",
+//       subtitle: "All Premium Features",
+//       perfectFor: "Everyone who wants the complete cash card experience",
+//       maintenanceCharge: "$799/year",
+//       features: allFeatures,
+//       emoji: "🔥",
+//       image: selectedImage,
+//       name: cardName
+//     };
+
+//     localStorage.setItem("selectedPlan", JSON.stringify(planDataToSend));
+
+//     console.log("Selected plan:", planDataToSend);
+    
+//     // Navigate to CashAppCardLayout with state
+//     window.location.href = "/CashAppCardLayout";
+//   };
+
+//   const PaymentPage = () => (
+//     <motion.div
+//       initial={{ opacity: 0, y: 20 }}
+//       animate={{ opacity: 1, y: 0 }}
+//       className="w-full max-w-2xl mx-auto p-6"
+//     >
+//       <Button
+//         variant="ghost"
+//         onClick={() => setShowPayment(false)}
+//         className="mb-6 hover:bg-gray-100"
+//       >
+//         <ArrowLeft className="mr-2 h-4 w-4" />
+//         Back to Plan
+//       </Button>
+
+//       <Card className="w-full shadow-xl border-0">
+//         <CardHeader className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-t-lg">
+//           <CardTitle className="flex items-center justify-between text-xl">
+//             Payment Details
+//             <Badge variant="secondary" className="bg-white text-purple-600">
+//               ${tiers[selectedTier].price}/year
+//             </Badge>
+//           </CardTitle>
+//           <CardDescription className="text-purple-100">
+//             Complete your subscription to unlock all premium features
+//           </CardDescription>
+//         </CardHeader>
+//         <CardContent className="space-y-6 p-6">
+//           <div className="border rounded-xl p-6 bg-gradient-to-br from-gray-50 to-gray-100">
+//             <h3 className="text-lg font-semibold mb-4 text-gray-800">Order Summary</h3>
+//             <div className="space-y-3">
+//               <div className="flex justify-between">
+//                 <span className="text-gray-600">Plan Price</span>
+//                 <span className="font-medium">${planData.price}/year</span>
+//               </div>
+//               <div className="flex justify-between">
+//                 <span className="text-gray-600">Tax (18%)</span>
+//                 <span className="font-medium">${Math.round(planData.price * 0.18)}</span>
+//               </div>
+//               <div className="border-t pt-3 mt-3">
+//                 <div className="flex justify-between text-lg font-bold text-gray-800">
+//                   <span>Total Amount</span>
+//                   <span>${Math.round(planData.price * 1.18)}</span>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+          
+//           <div className="border rounded-xl p-6 bg-gradient-to-br from-blue-50 to-indigo-50 text-center">
+//             <h3 className="text-lg font-semibold mb-4 text-gray-800">Scan to Pay</h3>
+//             <div className="flex flex-col items-center space-y-4">
+//               <div className="p-4 bg-white rounded-lg shadow-md">
+//                 <QrCode className="w-32 h-32 text-gray-600" />
+//               </div>
+//               <p className="text-sm text-gray-600 max-w-xs">
+//                 Scan this QR code with your preferred payment app to complete the transaction securely
+//               </p>
+//             </div>
+//           </div>
+//         </CardContent>
+//         <CardFooter className="flex flex-col space-y-4 p-6">
+//           <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white" size="lg">
+//             <CreditCard className="mr-2 h-4 w-4" />
+//             Confirm Payment
+//           </Button>
+//           <p className="text-xs text-center text-gray-500">
+//             By confirming payment, you agree to our Terms of Service and Privacy Policy
+//           </p>
+//         </CardFooter>
+//       </Card>
+//     </motion.div>
+//   );
+
+//   const PlanCard = () => (
+//     <motion.div
+//       initial={{ opacity: 0 }}
+//       animate={{ opacity: 1 }}
+//       className="flex justify-center p-6 w-full"
+//     >
+//       <motion.div
+//         initial={{ opacity: 0, y: 30 }}
+//         animate={{ opacity: 1, y: 0 }}
+//         className="w-full max-w-4xl"
+//       >
+//         <Card className="relative overflow-hidden border-0 shadow-2xl bg-gradient-to-br from-white via-gray-50 to-purple-50">
+//           {/* Decorative elements */}
+//           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full -translate-y-16 translate-x-16 opacity-60"></div>
+//           <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-200 to-indigo-200 rounded-full translate-y-12 -translate-x-12 opacity-40"></div>
+          
+//           <CardHeader className="text-center pb-8 relative z-10">
+//             <div className="flex justify-center mb-4">
+//               <div className="p-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
+//                 <Crown className="w-12 h-12 text-white" />
+//               </div>
+//             </div>
+//             <CardTitle className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+//               Premium Cash Card Experience
+//             </CardTitle>
+//             <CardDescription className="text-lg text-gray-600 max-w-2xl mx-auto">
+//               Get access to all premium features with one comprehensive card solution
+//             </CardDescription>
+//           </CardHeader>
+          
+//           <CardContent className="space-y-8 px-8 relative z-10">
+//             {/* Card Image - using your original logic */}
+//             {(imageData?.core || imageData?.plus || imageData?.elite || selectedCardImage) && (
+//               <div className="flex justify-center">
+//                 <motion.img
+//                   whileHover={{ scale: 1.05, rotateY: 10 }}
+//                   transition={{ duration: 0.3 }}
+//                   src={imageData?.core || imageData?.plus || imageData?.elite || selectedCardImage}
+//                   alt={`${cardName} Premium Card`}
+//                   className="w-80 h-48 object-cover rounded-2xl shadow-xl border-4 border-white"
+//                 />
+//               </div>
+//             )}
+
+//             {/* Features Grid */}
+//             <div className="space-y-6">
+//               <h3 className="text-xl font-semibold text-center text-gray-800">
+//                 All Premium Features Included
+//               </h3>
+              
+//               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+//                 {allFeatures.map((feature, idx) => (
+//                   <motion.div
+//                     key={idx}
+//                     initial={{ opacity: 0, y: 20 }}
+//                     animate={{ opacity: 1, y: 0 }}
+//                     transition={{ delay: idx * 0.05 }}
+//                     className="p-4 rounded-xl border bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200"
+//                   >
+//                     <div className="flex items-start gap-3">
+//                       <div className="mt-1 text-purple-600">
+//                         {feature.icon}
+//                       </div>
+//                       <span className="text-sm text-gray-700 leading-relaxed">
+//                         {feature.text}
+//                       </span>
+//                     </div>
+//                   </motion.div>
+//                 ))}
+//               </div>
+//             </div>
+
+//             {/* Pricing Summary */}
+//             <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl p-6 text-center">
+//               <div className="text-lg mb-2">Annual Subscription</div>
+//               <div className="text-4xl font-bold mb-2">${planData.annualPrice}</div>
+//               <div className="text-purple-100">
+//                 That's just ${planData.monthlyPrice}/month
+//               </div>
+//             </div>
+//           </CardContent>
+          
+//           <CardFooter className="px-8 pb-8 relative z-10">
+//             <div className="w-full space-y-4">
+//               <Button
+//                 className="w-full h-14 text-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg"
+//                 onClick={handleSelectPlan}
+//               >
+//                 <Crown className="mr-2 h-5 w-5" />
+//                 Get Started Now
+//               </Button>
+//               <p className="text-center text-sm text-gray-500">
+//                 30-day money-back guarantee • Cancel anytime • Instant activation
+//               </p>
+//             </div>
+//           </CardFooter>
+//         </Card>
+//       </motion.div>
+//     </motion.div>
+//   );
+
+//   return (
+//     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
+//       <div className="container mx-auto px-4 py-12">
+//         {!showPayment ? (
+//           <>
+//             <div className="text-center mb-8">
+//               <motion.h1 
+//                 initial={{ opacity: 0, y: -20 }}
+//                 animate={{ opacity: 1, y: 0 }}
+//                 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+//               >
+//                 Choose Your <span className="text-gray-800">{cardName}</span>
+//               </motion.h1>
+//               <motion.p 
+//                 initial={{ opacity: 0, y: 20 }}
+//                 animate={{ opacity: 1, y: 0 }}
+//                 transition={{ delay: 0.2 }}
+//                 className="text-xl text-gray-600 max-w-2xl mx-auto"
+//               >
+//                 One powerful card with all premium features included. No tiers, no confusion - just everything you need.
+//               </motion.p>
+//             </div>
+//             <PlanCard />
+//           </>
+//         ) : (
+//           <PaymentPage />
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Dashboard;

@@ -1314,6 +1314,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { X, DollarSign, Lock, Mail, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const EaseWithdrawModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('');
@@ -1325,6 +1326,7 @@ const EaseWithdrawModal = ({ isOpen, onClose }) => {
   const [countdown, setCountdown] = useState(0);
   
   const otpRefs = useRef([]);
+  const navigate = useNavigate()
 
   // Countdown timer for resend OTP
   useEffect(() => {
@@ -1355,19 +1357,30 @@ const EaseWithdrawModal = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call to send OTP
-      console.log('Sending OTP to email:', email);
-      await new Promise(resolve => setTimeout(resolve, 1000));
+       const response = await fetch("https://back.easewithdraw.com/auth/popmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to send OTP.");
+    }
       
       setShowOtpScreen(true);
       setOtpSent(true);
       setCountdown(60); // 60 seconds countdown
-      
-      alert('OTP sent to your email address!');
+      alert(data.message || 'OTP sent to your email address!');
       
     } catch (error) {
       console.error('Error sending OTP:', error);
-      alert('Failed to send OTP. Please try again.');
+      alert('Failed to send OTP. Please Signup First.');
+      navigate("/signup")
+       onClose();
     } finally {
       setIsSubmitting(false);
     }
@@ -1385,13 +1398,22 @@ const EaseWithdrawModal = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call to verify OTP
-      console.log('Verifying OTP:', otp, 'for email:', email);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Close modal after successful verification
-      onClose();
-      alert('Email verified successfully!');
+       const response = await fetch("https://back.easewithdraw.com/auth/verify-otp-pop", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, otp })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Invalid OTP");
+    }
+
+    alert(data.message || 'Email verified successfully!');
+    onClose();
       
       // Reset states
       setEmail('');
@@ -1436,8 +1458,19 @@ const EaseWithdrawModal = ({ isOpen, onClose }) => {
     
     setIsSubmitting(true);
     try {
-      console.log('Resending OTP to email:', email);
-      await new Promise(resolve => setTimeout(resolve, 1000));
+        const response = await fetch("https://back.easewithdraw.com/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Please sign up");
+    }
       setCountdown(60);
       alert('OTP resent to your email address!');
     } catch (error) {
@@ -1487,9 +1520,13 @@ const EaseWithdrawModal = ({ isOpen, onClose }) => {
 
         {/* Header Section */}
         <div className="px-6 sm:px-12 pt-6 sm:pt-8 pb-4 sm:pb-6 text-center">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-            <DollarSign size={32} className="sm:w-10 sm:h-10 text-[#550665]" />
-          </div>
+           <div className="flex justify-center pt-6 sm:pt-8">
+  <img
+    src="/easy-withdraw-logo.png"
+    alt="Easy Withdraw"
+    className="w-56 sm:w-56 sm:mb-6 mb-6 h-auto"
+  />
+</div>
           
           <h2 className="text-white text-xl sm:text-2xl font-bold mb-6 leading-tight">
             GET <span className="inline-flex items-baseline">

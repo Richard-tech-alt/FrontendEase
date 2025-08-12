@@ -95,7 +95,7 @@ const Robinhood = () => {
       </div>
 
       <FAQAccordion />
-      <CallToAction />
+      {/* <CallToAction /> */}
     </div>
   );
 };

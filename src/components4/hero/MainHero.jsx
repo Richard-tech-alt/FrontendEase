@@ -435,7 +435,7 @@ const MainHero = () => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-[#27012F]/30 to-purple-500/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#550665]/20 to-[#27012F]/20 rounded-full blur-3xl animate-pulse delay-500"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+        <div className="relative max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="text-center lg:text-left space-y-6 sm:space-y-8">

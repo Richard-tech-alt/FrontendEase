@@ -96,7 +96,7 @@ const Paypal = () => {
       <div className="flex justify-center my-32 ">
         <FAQAccordion />
       </div>
-      <CallToAction />
+      {/* <CallToAction /> */}
     </div>
   );
 };

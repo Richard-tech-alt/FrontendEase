@@ -34,7 +34,7 @@ const TrustWallet = () => {
       <CardSet />
       <CryptoCardShowcase />
       <FAQ />
-      <CallToAction />
+      {/* <CallToAction /> */}
     </div>
   );
 };

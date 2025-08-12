@@ -35,7 +35,7 @@ const Coinbase = () => {
       <FeatureCards/>
       <CryptoCards/>
       <FAQ/>
-      <CallToAction/>
+      {/* <CallToAction/>  */}
     </div>
   )
 }

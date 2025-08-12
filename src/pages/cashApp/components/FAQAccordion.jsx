@@ -35,7 +35,7 @@ export default function FAQAccordion() {
   };
 
   return (
-    <div className="w-[85%] mx-auto rounded-xl p-8" style={{
+    <div className="w-[85%] mx-auto rounded-xl p-8 mb-16" style={{
       background: 'linear-gradient(to top, #F2EFEF, #FFE2DD)'
     }}>
       <h2 className="text-black text-center text-3xl md:text-4xl font-medium mb-12">

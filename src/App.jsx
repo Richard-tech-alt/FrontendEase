@@ -382,9 +382,8 @@ const App = () => {
         isOpen={showEaseWithdrawModal} 
         onClose={handleCloseModal}
       />
-
       <TawkToChat />
-      <Footer />
+      <Footer/>
     </div>
   );
 };

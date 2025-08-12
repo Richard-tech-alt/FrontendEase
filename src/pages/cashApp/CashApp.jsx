@@ -209,7 +209,7 @@ const CashApp = () => {
 'Secure, regulated, and fully crypto-aligned'
 ]}/>
 <FAQAccordion />
-<CallToAction />
+{/* <CallToAction /> */}
 </div>           
         </div>
     )
