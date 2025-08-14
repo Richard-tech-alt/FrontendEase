@@ -116,6 +116,7 @@ import FromGooglePlay from "../assets/download-play-store.png"
 // import TawkToChat from './TawkToChat';
 import { Link } from 'react-router-dom';
 import TawkToChat from './TawkToChat';
+// import ReviewCard from '@/ReviewCard';
 
 export default function Footer() {
   return (
@@ -192,6 +193,12 @@ export default function Footer() {
                 />
               </Link>
             </div>
+              {/* <ReviewCard
+        rating={5}
+        title="Excellent Service"
+        text="Very happy with the product quality and fast delivery. Would highly recommend!"
+        reviewer="John D."
+      /> */}
           </div>
         </div>
         {/* Footer bottom - copyright and social as */}
@@ -222,6 +229,7 @@ export default function Footer() {
         </div>
       </div>
     </div>
+    
     </div>
   );
 }
