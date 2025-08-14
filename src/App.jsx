@@ -385,23 +385,7 @@ const App = () => {
         onClose={handleCloseModal}
       />
       <TawkToChat />
-          <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-      <div className="bg-white rounded-2xl shadow-lg p-6 w-full max-w-3xl">
-        <h1 className="text-xl font-semibold mb-4">What our customers say</h1>
-
-        <TrustpilotWidget
-          businessUnitId="YOUR_BUSINESS_UNIT_ID"
-          templateId="53aa8912dec7e10d38f59f36" // choose the exact widget in the dashboard
-          reviewUrl="https://www.trustpilot.com/review/yourdomain.com"
-          styleHeight="220px"
-          styleWidth="100%"
-          theme="light"
-          locale="en-US"
-        />
-      </div>
-    </div>
-    </div>
+          
       <Footer/>
     </div>
   );

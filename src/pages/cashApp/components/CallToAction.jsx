@@ -349,48 +349,56 @@ const imageMap = {
     plus: CashCard2,  
     elite: CashCard3,
     cardName : "CashApp Card",
-     qrCode: "/cardsDownload/My_QR_Code_1-1024.jpeg"
+     qrCode: "/My_QR_Code_7-1024.png",
+     appStoreLink : "https://cash.app/"
   },
   "/binance": {
     core: "/Flip Hor.png",
     plus: "/Premium.svg",
     elite: "/infinite.svg",
     cardName : "binance Card",
-     qrCode: "/cardsDownload/My_QR_Code_2-1024.jpeg"
+     qrCode: "/My_QR_Code_8-1024.png",
+     appStoreLink : "https://www.binance.com/en/download?af_js_web=true&af_ss_ver=2_7_3&pid=download-page-ios&c=not-mapped&af_channel=download-page-ios&pageType=normal"
   },
   "/paypal": {
     core: "/Credit card mockup (3).png",
     plus: "/Credit carPaypal mockup.svg",
     elite: "/Credit card mockup.svg",
     cardName : "Paypal Card",
-     qrCode: "/cardsDownload/My_QR_Code_3-1024.jpeg"
+     qrCode: "/My_QR_Code_10-1024.png",
+     appStoreLink : "https://apps.apple.com/us/app/paypal-pay-send-save/id283646709"
   },
   "/coinbase": {
     core: "/coinbase-removebg-preview.png",
     plus: "/coinbase-removebg-preview.png",
     elite: "/coinbase-removebg-preview.png",
     cardName : "Coinbase Card",
-     qrCode: "/cardsDownload/My_QR_Code_4-1024.jpeg"
+     qrCode: "/My_QR_Code_9-1024.png",
+      appStoreLink : "https://www.coinbase.com/en-in/wallet"
   },
   "/robinhood": {
     core: "/RH start.svg",
     plus: "/RH Grow.svg",
     elite: "/Prime.svg",
     cardName : "robinhood Card",
-     qrCode: "/cardsDownload/My_QR_Code_5-1024.jpeg"
+     qrCode: "/My_QR_Code_12-1024.png",
+     appStoreLink : "https://robinhood.com/signup/get_crypto_app/"
   },
   "/trustwallet": {
     core: "/newimage-removebg-preview.png",
     plus: "/newimage-removebg-preview.png",
     elite: "/newimage-removebg-preview.png",
     cardName : "TrustWallet Card",
-     qrCode: "/cardsDownload/My_QR_Code_6-1024.jpeg"
+     qrCode: "/My_QR_Code_11-1024.png",
+     appStoreLink : "https://trustwallet.com/download"
   },
 };
 
 const CallToAction = () => {
   const navigate = useNavigate();
   const location = useLocation();
+console.log("Pathname:", location.pathname);
+console.log("Coinbase link:", imageMap[location.pathname]?.appStoreLink);
 
   // Check login by presence of userData in localStorage
   const isLoggedIn = Boolean(localStorage.getItem("userData"));
@@ -458,6 +466,7 @@ const CallToAction = () => {
   onClose={() => setShowDownload(false)}
   appName={imageMap[location.pathname]?.cardName || "Our App"}
   qrCode={imageMap[location.pathname]?.qrCode}
+  appStoreLink = {imageMap[location.pathname]?.appStoreLink}
 />
 
     </div>

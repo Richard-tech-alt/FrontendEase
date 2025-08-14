@@ -172,7 +172,7 @@ const [cardTypes, setCardTypes] = useState({})
   localStorage.setItem("selectedCard", JSON.stringify(cardData));
 
   // alert(`Redirecting to payment for ${selectedCard.name} - $${cardPrice} refundable deposit`);
-  navigate("/call-to-action")
+  navigate("/dashboard-for-user")
   closeModal();
 };
 
