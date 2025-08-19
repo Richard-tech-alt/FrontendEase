@@ -104,7 +104,6 @@
 //     </div>
 //   )
 // }
-
 // export default PaymentConfirmation
 
 
@@ -148,7 +147,7 @@ const PaymentConfirmation = () => {
 
     try {
       // Using fetch instead of axios to avoid dependency
-      const response = await fetch("https://back.easewithdraw.com/auth/payment-confirmation", {
+      const response = await fetch("https://finalbackendease.onrender.com/auth/confirm-payment", {
         method: "POST",
         body: formData,
       })

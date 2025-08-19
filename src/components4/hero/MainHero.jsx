@@ -298,6 +298,7 @@ import {
 } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
+import CustomConnectButton from "@/CustomConnectButton"
 
 const MainHero = () => {
   // const {  isConnected } = useAccount()
@@ -514,7 +515,7 @@ const MainHero = () => {
                   <span className="relative z-10 flex items-center justify-center space-x-2 sm:space-x-3">
           <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300" />
           <span className="whitespace-nowrap">
-            {isLoggedIn ? "Access Dashboard" : "Apply Now"}
+            {isLoggedIn ? <CustomConnectButton/> : "Apply Now"}
           </span>
           <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-2 transition-transform duration-300" />
         </span>

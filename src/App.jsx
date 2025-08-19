@@ -249,6 +249,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/Privacy";
 import TermsOfUse from "./pages/TermsOfUse/Terms";
 import ReviewCard from "./ReviewCard";
 import TrustpilotWidget from "./ReviewCard";
+import CustomConnectButton from "./CustomConnectButton";
 
 // Lazy loaded pages/components
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -346,6 +347,7 @@ const App = () => {
       <ErrorBoundary>
         <Suspense fallback={<div className="text-center py-10 text-lg font-semibold text-gray-700">Loading...</div>}>
           <Routes>
+            
             <Route path="/" element={<Home/>}/>
             <Route path="/cash-app" element={<CashApp/>}/>
             <Route path="/binance" element={<Binance/>}/>
