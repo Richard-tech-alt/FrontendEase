@@ -323,7 +323,7 @@ const MainHero = () => {
 
   const handleClick = () => {
     if (isLoggedIn) {
-      navigate("/user-dashboard");
+      navigate("/");
     } else {
       navigate("/login");
     }
