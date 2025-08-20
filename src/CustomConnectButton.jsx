@@ -115,7 +115,6 @@ const CustomConnectButton = () => {
         }}
         onMouseOut={(e) => {
           if (!isPending && !isConnecting) {
-            e.target.style.backgroundColor = '#3b82f6';
             e.target.style.transform = 'translateY(0)';
           }
         }}
